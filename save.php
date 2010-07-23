@@ -16,15 +16,14 @@ if($_POST['type'] == 'dtr') {
 }
 elseif($_POST['type'] == 'ants') {
 	if(strlen($_POST['ant1'])>0) {
-		$distortion1 = explode(',',$_POST['distortion1']);
-		$db->save_ant($user,$_POST['ant1'],$distortion1);		
+		$db->save_ant($user,$_POST['ant1'],$_POST['distortion1']);		
 	}
-	if(strlen($_POST['ant2'])>0) {
-		$distortion2 = explode(',',$_POST['distortion2']);			
-		$db->save_ant($user,$_POST['ant2'],$distortion2);		
+	if(strlen($_POST['ant2'])>0) {		
+		$db->save_ant($user,$_POST['ant2'],$_POST['distortion2']);		
 	}
 	$db->award_exp($user,'distortions',200);
-	echo json_encode($db->calculate_rank($user));
+	list($rank, $total) = $db->calculate_rank($user)
+	echo $rank;
 	return;
 }
 

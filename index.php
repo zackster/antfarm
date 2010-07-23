@@ -5,6 +5,9 @@ if(!isset($_COOKIE['source'])) {
 		setcookie('source', $_SERVER['HTTP_REFERER'], time()+60*60*24*30);		
 	}
 }
+if(isset($_REQUEST['r'])) {
+	setcookie('user_referrer', $_REQUEST['r'], time()+60*60*24*30);
+}
 
 ?><html>
 <head>

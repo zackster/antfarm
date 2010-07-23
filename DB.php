@@ -21,7 +21,8 @@ class DB {
 	function calculate_leaderboard() {
 		$query = sprintf("set @cnt :=0");
 		mysql_query($query);
-		$query = sprintf("select @cnt := @cnt+1 as rank,users.username,sum(experience.value) as score from experience,users where users.id=experience.uid group by uid order by score desc limit 50");
+		$query = sprintf("select @cnt := @cnt+1 as rank,dt.* FROM (SELECT users.username,sum(experience.value) as score from experience,users where users.id=experience.uid group by uid order by score desc limit 50) as dt");
+		
 		$res = mysql_query($query);
 		$ret = array();
 		while($row = mysql_fetch_assoc($res)) {
@@ -42,7 +43,8 @@ class DB {
 		$count_initialization_query = sprintf("set @cnt :=0");
 		mysql_query($count_initialization_query);
 
-		$leaderboard_insertion_query = sprintf("insert into leaderboard(rank,uid,score) select @cnt := @cnt+1 as rank,uid,sum(value) as score from experience group by uid order by score desc");
+//		$leaderboard_insertion_query = sprintf("insert into leaderboard(rank,uid,score) select @cnt := @cnt+1 as rank,uid,sum(value) as score from experience group by uid order by score desc");
+		$leaderboard_insertion_query = sprintf("insert into leaderboard(rank,uid,score) select @cnt := @cnt+1 as rank,dt.* FROM (SELECT experience.uid,sum(experience.value) as score from experience group by uid order by score desc limit 50) as dt");
 		$leaderboard_result = mysql_query($leaderboard_insertion_query);
 		
 
@@ -57,9 +59,16 @@ class DB {
 		
 		return array($rank_row['rank'],$scoreboard_row['scoreboard_size']);
 	}
+	
+	function calculate_score($uid) {
+		$query = sprintf("SELECT sum(value) AS score FROM experience WHERE uid=%d", $uid);
+		$res = mysql_query($query);
+		$row = mysql_fetch_assoc($res);
+		return $row['score'];
+	}
 
 	function create_user($email, $pw, $username, $source) {
-		$query = sprintf("INSERT INTO users (email,pw,username,source) VALUES ('%s','%s','%s','%s')", mysql_real_escape_string($email), md5($pw), mysql_real_escape_string($username), mysql_real_escape_string($source));
+		$query = sprintf("INSERT INTO users (email,pw,username,source,last_login) VALUES ('%s','%s','%s','%s',now())", mysql_real_escape_string($email), md5($pw), mysql_real_escape_string($username), mysql_real_escape_string($source));
 		mysql_query($query);
 		return mysql_insert_id();		
 	}

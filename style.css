@@ -276,3 +276,12 @@ table.leaderboard td {
 	padding: 8px 50px 0px 0px;
 	text-align: left;
 }
+div#invitation_field {
+	display: none;
+	width: 300px;
+	border: 1px solid grey;
+	padding: 10px;
+}
+label.invitation {
+	font-size: .8em;
+}

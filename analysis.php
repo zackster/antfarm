@@ -186,8 +186,25 @@ else {
 			save_data['type'] = 'ants';
 			save_data['ant1'] = $("#ant1").val();
 			save_data['ant2'] = $("#ant2").val();
-			save_data['distortion1'] = distortion1;
-			save_data['distortion2'] = distortion2;					
+			distortion1string = '';
+			for(var i=0;i<distortion1.length;i++) {
+				distortion1string += distortion1[i].substr(3,distortion1[i].length-4) + ','; 
+				// eliminating the <i> and </i> ... 
+				// TODO: refactor so that the container applies the formatting and we don't have to string manipulate					
+				distortion1string = distortion1string.slice(0,-1);
+			}
+
+
+			distortion2string = '';
+			for(var i=0;i<distortion2.length;i++) {
+				distortion2string += distortion2[i].substr(3,distortion2[i].length-4) + ','; 
+				// eliminating the <i> and </i> ... 
+				// TODO: refactor so that the container applies the formatting and we don't have to string manipulate					
+				distortion2string = distortion2string.slice(0,-1);
+			}
+			
+			save_data['distortion1'] = distortion1string;
+			save_data['distortion2'] = distortion2string;					
 			$.post('save.php', save_data, function(new_rank) {
 				alert('Congratulations! Your EndAnts rank has increased to ' + new_rank + '. This is a jump of ' + rank_differential + ' spots!');
 				window.location = 'home.php';
@@ -463,6 +480,9 @@ else {
 	<br /><br /><h5>Reasonable Thought one</h5>
 	<br />Your original thought was &quot;<i><span id="automatic-thought-1"></span></i>&quot;
 	<br />How can you reply with a thought that is not <span id="distortion-serial-1" class="distortion-serial">&nbsp;</span>?
+	<!--TODO: fix this so that it does not run into the HUD -->
+	
+	
 	<br />
 	<img src="images/quotes1.jpg" id="quote1">
 	<textarea class="automatic-thought" id="reasonable-thought-1" rows="7" cols="30"></textarea>
