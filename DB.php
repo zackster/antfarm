@@ -73,6 +73,19 @@ class DB {
 		return mysql_insert_id();		
 	}
 	
+	function get_notification_count($uid) {
+		$query = sprintf("SELECT COUNT(*) as notification_count FROM notification_queue WHERE is_read=0 AND uid=%d", $uid);
+		$res = mysql_query($query);
+		$row = mysql_fetch_assoc($res);
+		return $row['notification_count'];
+	}	
+	
+	function insert_notification($uid,$message) {
+		$query = sprintf("INSERT INTO notification_queue (uid,message) VALUES (%d,'%s')", $uid, mysql_real_escape_string($message));
+		mysql_query($query);
+		return;
+	}
+	
 	function login_user($email, $pw) {
 		$query = sprintf("SELECT id,username FROM users WHERE email='%s' AND pw='%s'", mysql_real_escape_string($email),md5($pw));
 		$res = mysql_query($query);
@@ -85,6 +98,12 @@ class DB {
 		else {
 			return false;
 		}
+	}
+	
+	function mark_notifications_read($uid) {
+		$query = sprintf("UPDATE notification_queue SET is_read=1,read_date=now() WHERE is_read=0 AND uid=%d", $uid);
+		$res = mysql_query($query);
+		return;
 	}
 	
 	function save_ant($uid,$ant,$distortions) {

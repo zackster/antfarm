@@ -15,6 +15,7 @@ if($_SESSION['uid'] == false) {
 else {
 	if(isset($_COOKIE['user_referrer'])) {
 		$db->award_exp($_COOKIE['user_referrer'],'accepted_invitation',10);		
+		$db->insert_notification($_COOKIE['user_referrer'], $_POST['reg_username'] . ' has accepted your invitation! You have been credited with 10 karma points.');
 	}
 	
 	$_SESSION['username'] = $_POST['reg_username'];
