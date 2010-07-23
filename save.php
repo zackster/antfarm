@@ -22,7 +22,7 @@ elseif($_POST['type'] == 'ants') {
 		$db->save_ant($user,$_POST['ant2'],$_POST['distortion2']);		
 	}
 	$db->award_exp($user,'distortions',200);
-	list($rank, $total) = $db->calculate_rank($user)
+	list($rank, $total) = $db->calculate_rank($user);
 	echo $rank;
 	return;
 }

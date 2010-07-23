@@ -49,12 +49,12 @@ else {
 	$(document).ready(function() {
 
 		/* Responses from section 1 - dtr.php */				
-		session_data = <?=json_encode($_SESSION)?>;		
-		emotion_data = session_data['emotions'];		
+		var session_data = <?=json_encode($_SESSION)?>;		
+		var emotion_data = session_data['emotions'];		
 		<?php if($demo_mode) { ?>
-			username = session_data['username'];
+			var username = session_data['username'];
 		<?php } else { ?>
-			username = '<?php echo htmlentities($_SESSION['username']); ?>';
+			var username = '<?php echo htmlentities($_SESSION['username']); ?>';
 		<? } ?>
 		
 		/* Page Initialization */
@@ -160,6 +160,12 @@ else {
 			$("#analysis-rerate-emotional-intensity").show();
 			$("#pb2").progressBar(95);			
 			$("#stepnumber").text(7);		
+									
+			// we're redefining emotion_data here to resolve namespace issues.
+			// TODO: figure out wtf we have namespace issues; namely, why this function doesn't have access to its parent's namespace
+			var session_data = <?=json_encode($_SESSION)?>;		
+			var emotion_data = session_data['emotions'];		
+			
 												
 			var rerate = true;	
 			var sliderlist = range(1,emotion_data.length,1);		
@@ -176,7 +182,7 @@ else {
 		$("#analysis-rerate-emotional-intensity-next").click(function() {
 		<?php if($demo_mode) { ?>
 										
-			alert('Thanks for checking out the demo of the core functionality. The full site is more fun and feature-filled.');
+			alert('Thanks for checking out the demo of the core functionality. The full site is more fun and feature-filled, so go ahead and sign up!');
 			window.location = 'index.php';
 			
 		<?php } else { ?>
@@ -188,25 +194,28 @@ else {
 			save_data['ant2'] = $("#ant2").val();
 			distortion1string = '';
 			for(var i=0;i<distortion1.length;i++) {
-				distortion1string += distortion1[i].substr(3,distortion1[i].length-4) + ','; 
+				distortion1string += distortion1[i].substr(3,distortion1[i].length-7) + ','; 
 				// eliminating the <i> and </i> ... 
 				// TODO: refactor so that the container applies the formatting and we don't have to string manipulate					
-				distortion1string = distortion1string.slice(0,-1);
 			}
+			distortion1string = distortion1string.slice(0,-1);
 
 
 			distortion2string = '';
 			for(var i=0;i<distortion2.length;i++) {
-				distortion2string += distortion2[i].substr(3,distortion2[i].length-4) + ','; 
-				// eliminating the <i> and </i> ... 
-				// TODO: refactor so that the container applies the formatting and we don't have to string manipulate					
-				distortion2string = distortion2string.slice(0,-1);
+				distortion2string += distortion2[i].substr(3,distortion2[i].length-7) + ','; 
 			}
+			distortion2string = distortion2string.slice(0,-1);
 			
 			save_data['distortion1'] = distortion1string;
-			save_data['distortion2'] = distortion2string;					
+			save_data['distortion2'] = distortion2string; 					
 			$.post('save.php', save_data, function(new_rank) {
-				alert('Congratulations! Your EndAnts rank has increased to ' + new_rank + '. This is a jump of ' + rank_differential + ' spots!');
+				rank_differential = session_data['initial_rank']-new_rank;
+				alertmsg = 'Congratulations! Your EndAnts rank is now ' + new_rank + '.';
+				if(rank_differential>0) {
+					alertmsg += ' This is a jump of ' + rank_differential + ' spots!';
+				}
+				alert(alertmsg);
 				window.location = 'home.php';
 			});				
 		<?php } ?>
@@ -478,8 +487,10 @@ else {
 	<label>Talk back! Change the distortions to more reasonable thoughts.</label>
 	
 	<br /><br /><h5>Reasonable Thought one</h5>
+	<div id="width_container" style="width:500px">
 	<br />Your original thought was &quot;<i><span id="automatic-thought-1"></span></i>&quot;
 	<br />How can you reply with a thought that is not <span id="distortion-serial-1" class="distortion-serial">&nbsp;</span>?
+	</div>
 	<!--TODO: fix this so that it does not run into the HUD -->
 	
 	

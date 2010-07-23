@@ -88,7 +88,7 @@ class DB {
 	}
 	
 	function save_ant($uid,$ant,$distortions) {
-		$query = sprintf("INSERT INTO ant_queue (uid,ant,u_distortions) VALUES (%d,'%s','%s')", $uid, mysql_real_escape_string($ant),mysql_real_escape_string(implode(',',$distortions)));
+		$query = sprintf("INSERT INTO ant_queue (uid,ant,u_distortions) VALUES (%d,'%s','%s')", $uid, mysql_real_escape_string($ant),mysql_real_escape_string($distortions));
 		mysql_query($query);
 		return;
 	}

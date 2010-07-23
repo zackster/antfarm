@@ -14,6 +14,7 @@ else {
 require_once('DB.php');
 $db = new DB();
 list($rank, $scoreboard_size) = $db->calculate_rank($_SESSION['uid']);
+$_SESSION['initial_rank'] = $rank;
 
 function render_emotion_options() {
 	$emotions = array('afraid', 'annoyed', 'angry', 'aversion', 'confused', 'disconnected', 'embarrassed', 'pain', 'sad', 'tense', 'vulnerable', 'despair', 'shame', 'lonely', 'anxious', 'bored', 'tired', 'overwhelmed', 'enraged', 'frightened', 'disgusted', 'frustrated', 'hysterical', 'guilty', 'suspicious', 'helpless', 'hopeless', 'panic', 'nervous');
