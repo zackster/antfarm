@@ -51,6 +51,7 @@ else {
 	<body>
 		<ul class="navbar">
 			<li id="li-activities"><a href="home.php">Activities</a></li>
+			<li id="li-notifications"><a href="home.php?page=notifications">Notifications (<?php echo $db->get_notification_count($_SESSION['uid']); ?>)</a></li>
 			<li id="li-leaderboard"><a href="home.php?page=leaderboard">Leaderboard</a></li>
 			<li><a href="login.php?logout">Logout</a></li>
 		</ul>	
@@ -60,6 +61,34 @@ else {
 <div style="margin:10px; padding: 10px">
 <?php draw_leaderboard(); ?>
 </div>
+<?php } elseif($home_step == 'notifications') { 
+	
+	// table? span?
+	// make sure to mark all notifications read, or at least change the contents of the <li>
+?>
+<script type="text/javascript">
+$("#li-notifications").html('<a href="home.php?page=notifications">Notifications (0)</a>');
+</script>
+<div id="notification-box">
+<?php
+	$notifications = $db->get_notifications($_SESSION['uid']);
+	if(count($notifications) == 0) {
+		echo 'We have no messages for you right now!';
+	}
+	else {
+		
+	
+		foreach($notifications as $notification) {
+			echo '<span class="notification">';
+			$date_text = strtotime($notification['date']);		
+			$nice_date = date('M j', $date_text);
+			echo stripslashes($notification['message']) . ' ('. $nice_date .')';
+			echo '</span>';
+		}
+	}
+?>
+</div>
+	
 <?php } else { ?>		
 		
 		<div class="home-hud">
@@ -82,7 +111,7 @@ else {
 		Karma Quests:
 		<ul>
 			<li><a href="dtr.php">Correct some of your own Automatic Negative Thoughts</a>: <em>200 pts</em></li>
-			<li>(Anonymously) <a href="antreview.php">review someone else's Automatic Negative Thoughts</a>: <em>100 pts</em></li>
+			<li>(Anonymously) <a href="antreview.php">review someone else's Automatic Negative Thoughts</a>: <em>200 pts for you, 10 pts for them</em></li>
 			<li><a href="#" id="invitation_link">Invite a friend to EndAnts</a>: <em>10 pts per friend</em></li>
 		</p>
 

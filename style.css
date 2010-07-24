@@ -285,3 +285,16 @@ div#invitation_field {
 label.invitation {
 	font-size: .8em;
 }
+div#notification-box {
+	padding: 20px;
+}
+div#notification-box span.notification {
+	display:block;
+	margin-top: 10px;
+	clear: left;
+}
+span.anonymous-desc {
+	display: block;
+	padding-left: 5px;
+	margin-bottom: 3px;
+}

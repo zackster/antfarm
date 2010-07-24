@@ -14,4 +14,25 @@ function draw_leaderboard() {
 	echo '</table>';	
 }
 
+ function format_distortions(&$array, $useOxfordComma = false) {
+    $count = (is_array($array) ? count($array) : 0);
+    if (3 <= $count) {
+        $last = end($array);
+        $list = prev($array) . ($useOxfordComma ? ', and ' : ' and ') . $last;
+        while ($v = prev($array)) {
+            $list = $v . ', ' . $list;
+        }   
+    } else if (2 == $count) {
+        $last = end($array);
+        $list = prev($array) . ' and ' . $last;
+    } else if (1 == $count) {
+        $list = end($array);
+    } else {
+        return '';
+    }       
+            
+    reset($array);
+    return $list;
+}
+
 ?>

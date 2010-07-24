@@ -34,27 +34,8 @@ function render_emotion_options() {
 	<script type="text/javascript" src="dragdealer/dragdealer.js"></script>
 	<script type="text/javascript" src="jquery.js"></script>
 	<script type="text/javascript" src="jquery.progressbar.min.js"></script>
+	<script type="text/javascript" src="utilities.js"></script>
 	<script type="text/javascript">
-	/* Function for removing array duplicates - http://www.martienus.com/code/javascript-remove-duplicates-from-array.html */
-	Array.prototype.unique = function () {
-		var r = new Array();
-		o:for(var i = 0, n = this.length; i < n; i++)
-		{
-			for(var x = 0, y = r.length; x < y; x++)
-			{
-				if(r[x]==this[i])
-				{
-					continue o;
-				}
-			}
-			r[r.length] = this[i];
-		}
-		return r;
-	}
-	String.prototype.capitalize = function() {
-	    return this.charAt(0).toUpperCase() + this.slice(1);
-	}
-	
 	$(document).ready(function() {
 		
 
@@ -129,7 +110,7 @@ function render_emotion_options() {
 		$("#step3-next").click(function() {
 			save_data = new Object();
 			save_data['type'] = 'dtr';
-			save_data['negative-event'] = $("#negative-event-description").val();
+			save_data['negative_event'] = $("#negative-event-description").val();
 			save_data['emotions'] = new Array();
 			for(var i=0;i<emotions.length;i++){
 				var t = new Object();

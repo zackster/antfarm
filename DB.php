@@ -73,12 +73,30 @@ class DB {
 		return mysql_insert_id();		
 	}
 	
+	function get_notifications($uid) {
+		$query = sprintf("SELECT message,add_date FROM notification_queue WHERE uid=%d AND is_read=0 ORDER BY add_date desc", $uid);
+		$res = mysql_query($query);
+		$ret = array();
+		while($row = mysql_fetch_assoc($res)) {
+			array_push($ret, array('message'=>$row['message'], 'date'=>$row['add_date']));
+		}
+		$this->mark_notifications_read($uid);
+		return $ret;
+	}
+	
 	function get_notification_count($uid) {
 		$query = sprintf("SELECT COUNT(*) as notification_count FROM notification_queue WHERE is_read=0 AND uid=%d", $uid);
 		$res = mysql_query($query);
 		$row = mysql_fetch_assoc($res);
 		return $row['notification_count'];
 	}	
+	
+	function get_unreviewed_ant($uid) {
+		$query = sprintf("SELECT ant,event,u_distortions,u_uid FROM ant_queue WHERE r_uid=0 LIMIT 1");
+		$res = mysql_query($query);
+		$row = mysql_fetch_assoc($res);
+		return $row;
+	}
 	
 	function insert_notification($uid,$message) {
 		$query = sprintf("INSERT INTO notification_queue (uid,message) VALUES (%d,'%s')", $uid, mysql_real_escape_string($message));
@@ -100,16 +118,22 @@ class DB {
 		}
 	}
 	
-	function mark_notifications_read($uid) {
+	private function mark_notifications_read($uid) {
 		$query = sprintf("UPDATE notification_queue SET is_read=1,read_date=now() WHERE is_read=0 AND uid=%d", $uid);
 		$res = mysql_query($query);
 		return;
 	}
 	
-	function save_ant($uid,$ant,$distortions) {
-		$query = sprintf("INSERT INTO ant_queue (uid,ant,u_distortions) VALUES (%d,'%s','%s')", $uid, mysql_real_escape_string($ant),mysql_real_escape_string($distortions));
+	function save_ant($uid,$ant,$event,$distortions) {
+		$query = sprintf("INSERT INTO ant_queue (u_uid,ant,event,u_distortions) VALUES (%d,'%s','%s','%s')", $uid, mysql_real_escape_string($ant),mysql_real_escape_string($event),mysql_real_escape_string($distortions));
 		mysql_query($query);
 		return;
+	}
+	
+	function update_ant($u_uid, $ant,$event,$u_distortions, $r_uid, $r_distortions, $r_comments) {
+		$query = sprintf("UPDATE ant_queue SET r_uid=%d,r_distortions='%s',r_comments='%s' WHERE u_uid=%d AND event='%s' AND u_distortions='%s'", $r_uid,mysql_real_escape_string($r_distortions),mysql_real_escape_string($r_comments),$u_uid,mysql_real_escape_string($event),mysql_real_escape_string($u_distortions));
+		mysql_query($query);
+		return;		
 	}
 
 }
