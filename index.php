@@ -69,6 +69,7 @@ if(isset($_REQUEST['r'])) {
 	</script>
 <?php add_google_analytics_tracking(); ?>	
 </head>
+<body>
 <img src="images/logo.jpg" align="right">
 <div id="error_message">
 	Wrong username/password combination.
@@ -152,5 +153,8 @@ if(isset($_REQUEST['r'])) {
 			Built by <a href="http://www.zacharyburt.com" target="_blank">Zachary Burt</a>. Contact me at zackster<b>@</b>gmail.<a />com.
 	</label>
 	</center>
-
+	<script type="text/javascript" src="http://endants.com/clickheat/js/clickheat.js"></script><noscript></noscript><script type="text/javascript"><!-- clickHeatSite = 'endants';clickHeatGroup = 'group1';clickHeatServer = 'http://endants.com/clickheat/click.php';initClickHeat(); //-->
+	</script>
+	
+</body>
 </html>
