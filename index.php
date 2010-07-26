@@ -110,7 +110,7 @@ if(isset($_REQUEST['r'])) {
 	<img src="images/Picture 14-cropped.png">	
 	<img src="images/Picture 15-cropped.png">
 </div>
-<p>EndAnts uses an approach similar to Cognitive Behavioral Therapy, which has been founded to be even more effective than antidepressants in the treatment of adult depression. <label id="cbt_source">(<u>Source</u>)</label> <span id="cbt_review"><br /><br /><i>Please see:</i> <br /><br />Butler, A.C., Chapman, J.E., Forman, E.M., &amp; Beck, A.T. (2006). The empirical status of cognitive-behavioral therapy: A review of meta-analyses. <i>Clinical Psychology Review, 26(1),</i> 17-31.</span> </p>
+<p>EndAnts uses an approach similar to Cognitive Behavioral Therapy, which has been repeatedly found to be even more effective than antidepressants in the treatment of adult depression. <label id="cbt_source">(<u>Source</u>)</label> <span id="cbt_review"><br /><br /><i>Please see:</i> <br /><br />Butler, A.C., Chapman, J.E., Forman, E.M., &amp; Beck, A.T. (2006). The empirical status of cognitive-behavioral therapy: A review of meta-analyses. <i>Clinical Psychology Review, 26(1),</i> 17-31.</span> </p>
 
 <h2>Registration</h2>
 <p>Registration takes only 20 seconds and filling out a username, email, and password.</p>
