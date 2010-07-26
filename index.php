@@ -93,7 +93,7 @@ if(isset($_REQUEST['r'])) {
 <p>So welcome to EndAnts: the <b>A</b>utomatic <b>N</b>egative <b>T</b>hought destruction clinic</p>
 <button onclick="showRegistration()">Register</button>
 <button class="login" onclick="showLogin()">Log In</button>
-<button class="demo" onclick="javascript:window.location='dtr.php?demo_mode'">Demo</button>
+<?php // <button class="demo" onclick="javascript:window.location='dtr.php?demo_mode'">Demo</button> ?>
 <br /><br />
 <div id="login_field" class="field">
 	<form id="login_form" action="login.php" method="post">
