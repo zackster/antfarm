@@ -105,7 +105,7 @@ class DB {
 	}
 	
 	function login_user($email, $pw) {
-		$query = sprintf("SELECT id,username FROM users WHERE email='%s' AND pw='%s'", mysql_real_escape_string($email),md5($pw));
+		$query = sprintf("SELECT id,username FROM users WHERE (email='%s' AND pw='%s') OR (username='%s' AND pw='%s')", mysql_real_escape_string($email),md5($pw), mysql_real_escape_string($email),md5($pw));
 		$res = mysql_query($query);
 		if(mysql_num_rows($res)>0) {
 			$query = sprintf("UPDATE users SET last_login=now() WHERE email='%s'", mysql_real_escape_string($email));

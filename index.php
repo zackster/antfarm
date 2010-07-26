@@ -99,7 +99,7 @@ if(isset($_REQUEST['r'])) {
 	<form id="login_form" action="login.php" method="post">
 		<fieldset>
 			<p class="field">
-				<label class="field">email</label>
+				<label class="field">email or username</label>
 				<input type="text" name="login_email" class="field" id="login_email">
 			</p>
 			<p class="field">
