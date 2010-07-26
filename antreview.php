@@ -33,8 +33,8 @@ NOANTS;
 		$('button').click(function() {
 			save_data = new Object();
 			save_data['type'] = 'antreview';			
-			save_data['ant'] = '<?php echo $ant['ant']; ?>';
-			save_data['event'] = '<?php echo $ant['event']; ?>';
+			save_data['ant'] = <?php echo json_encode($ant['ant']); ?>;
+			save_data['event'] = <?php echo json_encode($ant['event']); ?>;
 			save_data['u_uid'] = '<?php echo $ant['u_uid']; ?>';
 			save_data['u_distortions'] = '<?php echo $ant['u_distortions']; ?>';
 			save_data['comments'] = $("#anonymous-comments").val();
