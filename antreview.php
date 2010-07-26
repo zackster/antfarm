@@ -9,7 +9,7 @@ $db = new DB();
 
 //ant event u_distortions
 $ant = $db->get_ant_for_review();
-if(count($ant)==0) {
+if($ant==false) {
 	echo <<<NOANTS
 	
 <script type="text/javascript">

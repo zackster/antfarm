@@ -28,7 +28,7 @@ if(isset($_REQUEST['r'])) {
 		$("#login_form").submit();
 	}
 	function registerUser() {
-		var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
+		var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-\+]+[a-zA-Z0-9_-\+]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
 		if($("#reg_password").val().length < 3) {
 			alert('Your password is too short. It must be at least 3 characters.');
 			return false;
