@@ -2,16 +2,18 @@
 session_start();
 require_once('utilities.php');
 
-if(isset($_COOKIE['demo_mode'])) {
-	header('Location: index.php?demo');
-	return;
-}
 
 
 $demo_mode = false;
 if(isset($_GET['demo_mode'])) {
-	$demo_mode = true;
-	setcookie('demo_mode','expired',time()+60*60*24*30);
+	if(isset($_COOKIE['demo_mode']) && !$_SESSION['logged_in']) {
+		header('Location: index.php?demo');
+		return;
+	}
+	else {	
+		$demo_mode = true;
+		setcookie('demo_mode','expired',time()+60*60*24*30);
+	}
 } 
 else {
 	// since it's not demo mode, we gotta bounce them if they aren't logged in 
