@@ -1,7 +1,15 @@
 <?php
 require_once('DB.php');
-
 session_start();
+
+if(strlen($_POST['reg_email']) == 0 || strlen($_POST['reg_username']) == 0) {
+	header('Location: index.php?regerr');
+	return;	
+}
+
+
+
+
 isset($_COOKIE['source']) ? $source = $_COOKIE['source'] : $source = 'none';
 if(isset($_COOKIE['user_referrer'])) { 
 	$source .= ',' . $_COOKIE['user_referrer'];
