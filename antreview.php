@@ -8,7 +8,7 @@ require_once('DB.php');
 $db = new DB();
 
 //ant event u_distortions
-$ant = $db->get_ant_for_review();
+$ant = $db->get_ant_for_review($_SESSION['uid']);
 if($ant==false) {
 	echo <<<NOANTS
 	

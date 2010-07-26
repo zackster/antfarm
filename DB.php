@@ -91,8 +91,8 @@ class DB {
 		return $row['notification_count'];
 	}	
 	
-	function get_ant_for_review() {
-		$query = sprintf("SELECT ant,event,u_distortions,u_uid FROM ant_queue ORDER BY review_count ASC LIMIT 1");
+	function get_ant_for_review($uid) {
+		$query = sprintf("SELECT ant,event,u_distortions,u_uid FROM ant_queue WHERE u_uid!=%d AND r_uid!=%d ORDER BY review_count ASC LIMIT 1", $uid, $uid);
 		$res = mysql_query($query);
 		$row = mysql_fetch_assoc($res);
 		return $row;
