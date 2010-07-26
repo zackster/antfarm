@@ -295,7 +295,10 @@ else {
 </div>
 <div id="analysis-automatic-thoughts">
 	<h2>Initial Response</h2>
-	<label>Describe up to two Automatic Thoughts or Self-Talk</label>
+	<div id="width_container2" style="width:700px">
+		<label>Describe up to two thoughts you had when the event occurred.</label><br />
+		<label>For example, if a friend didn't pick up when you called, and then you felt upset, one thought might have been &quot;she doesn't care about me&quot;</label>
+	</div>
 	
 	<br /><br /><h5>Thought one</h5>
 	<img src="images/quotes1.jpg" id="quote1">
@@ -341,7 +344,7 @@ else {
 <div id="analysis-initial-accuracy">
 	<h2>Accuracy</h2>
 	<label>Evaluate the accuracy of each thought. <br />Choose up to 3 distortions that might apply.<br />
-		Click <a href="#" onclick="javascript:distortionPopup();">here</a> for a pop-up explanation of the distortions, in case you forgot!</label>
+		Click <a href="#" onclick="javascript:distortionPopup();">here</a> for a pop-up explanation of the distortions.</label>
 	<br /><br />
 				&quot;<span class="ant" id="show-ant1a"></span>&quot;
 				<div class="distortion-list">(1)
