@@ -46,9 +46,7 @@ function render_emotion_options() {
 	<script type="text/javascript" src="utilities.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
-		<?php if($demo_mode) { ?>
-		alert('')
-		<?php } ?>
+	
 
 			
 		$("#fact-event-impact").hide();
