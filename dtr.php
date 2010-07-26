@@ -123,11 +123,13 @@ function render_emotion_options() {
 			if($demo_mode) { ?>
 				save_data['demo_mode'] = true;
 				save_data['username'] = username; 
-				$.post('save.php', save_data);
-				window.location = 'analysis.php?demo_mode=true';
+				$.post('save.php', save_data, function(complete) {
+					window.location = 'analysis.php?demo_mode=true';					
+				});
 			<?php } else { ?>
-				$.post('save.php', save_data);
-				window.location = 'analysis.php';
+				$.post('save.php', save_data, function(complete) {
+					window.location = 'analysis.php';					
+				});
 			<?php } ?>
 		});
 		
