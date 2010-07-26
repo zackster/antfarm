@@ -55,9 +55,9 @@ else {
 			$("#pb2").progressBar((1/7)*100);
 			$("#stepnumber").text(2);
 			initializeSliders([1,2]);	
-			$("#show-ant1").html($("#ant1").val());  //believability
-			$("#show-ant1a").html($("#ant1").val()); //accuracy	
- 			$("#show-ant1b").html($("#ant1").val()); //re-rating believability
+			$("#show-ant1").html('&quot;' + $("#ant1").val() + '&quot;');  //believability
+			$("#show-ant1a").html('&quot;' + $("#ant1").val() + '&quot;'); //accuracy	
+ 			$("#show-ant1b").html('&quot;' + $("#ant1").val() + '&quot;'); //re-rating believability
 			$("#show-ant2").html($("#ant2").val());
 			$("#show-ant2a").html($("#ant2").val());
  			$("#show-ant2b").html($("#ant2").val()); 
@@ -330,7 +330,7 @@ else {
 	<label>Rate the believability of your thoughts, from 1-10</label>
 	<br /><br />
 				<div id="ant1-believability-wrapper">
-					&quot;<span class="ant" id="show-ant1"></span>&quot;
+					<span class="ant" id="show-ant1" style="width: 700px; display: block;"></span>
 					<div class="slider-believability">
 						<div id="believability-slider-1" class="dragdealer">			
 							<div class="red-bar handle" id="slider1-value">intensity-o-meter</div>
@@ -357,7 +357,7 @@ else {
 	<label>Evaluate the accuracy of each thought. <br />Choose up to 3 distortions that might apply.<br />
 		Click <a href="#" onclick="javascript:distortionPopup();">here</a> for a pop-up explanation of the distortions.</label>
 	<br /><br />
-				&quot;<span class="ant" id="show-ant1a"></span>&quot;
+				<span class="ant" id="show-ant1a" style="display: block; width: 700px"></span>
 				<div class="distortion-list">(1)
 					<select id="distortion-1a">
 						<option value="assuming">assuming</option>
@@ -513,7 +513,7 @@ else {
 	<h2>Believability</h2>
 	<label>Rate the believability of your new reasonable thoughts, from 1-10</label>
 	<br /><br />
-				&quot;<span class="rt" id="reasonable-thought-1-show"></span>&quot;
+				<span class="rt" id="reasonable-thought-1-show"></span>
 				<div class="slider-believability">
 					<div id="believability-slider-3" class="dragdealer">			
 						<div class="red-bar handle" id="slider3-value">intensity-o-meter</div>
@@ -538,7 +538,7 @@ else {
 	<h2>RE-Rating Believability</h2>
 	<label>RE-Rate the believability of your original responses, from 1-10</label>
 	<br /><br />
-				&quot;<span class="ant" id="show-ant1b"></span>&quot;
+				<span class="ant" id="show-ant1b" style="display: block; width: 700px"></span>
 				<div class="slider-believability">
 					<div id="believability-slider-5" class="dragdealer">			
 						<div class="red-bar handle" id="slider5-value">intensity-o-meter</div>

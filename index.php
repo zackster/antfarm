@@ -15,6 +15,11 @@ if(isset($_REQUEST['r'])) {
 	<link rel="stylesheet" href="style.css">
 	<script type="text/javascript" src="utilities.js"></script>
 	<script type="text/javascript" src="jquery.js"></script>	
+	<script type="text/javascript" src="galleria/galleria.js"></script>
+	<script type="text/javascript">
+	Galleria.loadTheme('galleria/themes/lightbox/galleria.lightbox.js');
+	Galleria.debug = true;
+	</script>	
 	<script>
 	function showRegistration() {
 		$("#login_field").hide();
@@ -49,8 +54,20 @@ if(isset($_REQUEST['r'])) {
 	}
 	
 	$(document).ready(function() {
+
+		$('#galleria-images').galleria({
+			height: '300',
+			debug: true
+		});
+		
 		$("#login_field").hide();
 		$("#registration_field").hide();
+		$("#cbt_review").hide();
+		$("#cbt_source").toggle(function() {
+			$("#cbt_review").show();
+		}, function() {
+			$("#cbt_review").hide();
+		});
 
 <?php if(isset($_GET['badlogin'])) { ?>
 		$("#error_message").show();
@@ -65,6 +82,7 @@ if(isset($_REQUEST['r'])) {
 		$("#error_message").html('You have already checked out the demo. Please make a free account to continue using the tool.');
 <? } ?>
 	
+	
 	});
 	</script>
 <?php add_google_analytics_tracking(); ?>	
@@ -74,23 +92,29 @@ if(isset($_REQUEST['r'])) {
 <div id="error_message">
 	Wrong username/password combination.
 </div>
-<h1> What are negative thoughts?</h1>
+<h1>EndAnts is a free, fun web-based tool to help you eliminate negative thoughts</h1>
+<h2> What are negative thoughts and why should I care?</h2>
 <p>Negative thoughts are the enemy of happiness. Since our life is very much determined by our mind, our thoughts can make or break our life. Negative thoughts will distract your focus from what's important and will drain your energy.<br />Most of the time, they happen automatically.</p>
-<h1>Why should I care about eliminating them?</h1>
-<h2>Thinking Realistic &amp; Positive Makes Us Happier</h2>
-<p>Optimists will...</p>
-<ul id="optimism-benefits">
-	<li>Live longer</li>
-	<li>Be happier</li>
-	<li>Demonstrate better survival rates for cancer</li>
-	<li>Perform better in sports, especially after defeat</li>
-	<li>Advance more quickly in their careers</li>
-	<li class="source"><label>Source: Martin Seligman, <a href="http://www.amazon.com/dp/1400078393/?tag=httpwwwhiph02-20" target="_blank">Learned Optimism</a></label></li>
-</ul>
+<p>Thinking realistic &amp; positive makes us happier. Optimists will live longer, be happier, demonstrate better survival rates for cancer, perform better in sports, especially after defeat, and advance more quickly in their careers. <label>Source: Martin Seligman, <a href="http://www.amazon.com/dp/1400078393/?tag=httpwwwhiph02-20" target="_blank">Learned Optimism</a></label></p>
 
-</ul>
+<h2>What does EndAnts do?</h2>
+<p>EndAnts lets you list out events that "made" you feel bad, and then the thoughts that you had in response to the events. It lets you find any automatic distortions in your thoughts and then leverage the power of community to help you correct them.</p>
+<h3>See some screenshots</h3>
+<div id="galleria-images">
+	<img src="images/Picture 8-cropped.png">
+	<img src="images/Picture 9-cropped.png">
+	<img src="images/Picture 10-cropped.png">
+	<img src="images/Picture 11-cropped.png">
+	<img src="images/Picture 12-cropped.png">
+	<img src="images/Picture 13-cropped.png">
+	<img src="images/Picture 14-cropped.png">	
+	<img src="images/Picture 15-cropped.png">
+</div>
+<p>EndAnts uses an approach similar to Cognitive Behavioral Therapy, which has been founded to be even more effective than antidepressants in the treatment of adult depression. <label id="cbt_source">(<u>Source</u>)</label> <span id="cbt_review"><br /><br /><i>Please see:</i> <br /><br />Butler, A.C., Chapman, J.E., Forman, E.M., &amp; Beck, A.T. (2006). The empirical status of cognitive-behavioral therapy: A review of meta-analyses. <i>Clinical Psychology Review, 26(1),</i> 17-31.</span> </p>
 
-<p>So welcome to EndAnts: the <b>A</b>utomatic <b>N</b>egative <b>T</b>hought destruction clinic</p>
+<h2>Registration</h2>
+<p>Registration takes only 20 seconds and filling out a username, email, and password.</p>
+
 <button onclick="showRegistration()">Register</button>
 <button class="login" onclick="showLogin()">Log In</button>
 <?php // <button class="demo" onclick="javascript:window.location='dtr.php?demo_mode'">Demo</button> ?>
@@ -150,7 +174,7 @@ if(isset($_REQUEST['r'])) {
 	
 	<center>
 	<label>
-			Built by <a href="http://www.zacharyburt.com" target="_blank">Zachary Burt</a>. Contact me at zackster<b>@</b>gmail.<a />com.
+			Built by <a href="http://www.zacharyburt.com" target="_blank">Zachary Burt</a>. Contact me at zackster<b>@</b>gmail.<span>com</span>.
 	</label>
 	</center>
 	<script type="text/javascript" src="http://endants.com/clickheat/js/clickheat.js"></script><noscript></noscript><script type="text/javascript"><!-- clickHeatSite = 'endants';clickHeatGroup = 'group1';clickHeatServer = 'http://endants.com/clickheat/click.php';initClickHeat(); //-->

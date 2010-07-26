@@ -298,3 +298,10 @@ span.anonymous-desc {
 	padding-left: 5px;
 	margin-bottom: 3px;
 }
+span#cbt_review {
+	width: 500px;
+	margin-left: 90px;
+	padding-bottom: 30px;
+	padding-left: 10px;
+	display: block;
+}
