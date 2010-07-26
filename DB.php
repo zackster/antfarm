@@ -91,8 +91,8 @@ class DB {
 		return $row['notification_count'];
 	}	
 	
-	function get_unreviewed_ant($uid) {
-		$query = sprintf("SELECT ant,event,u_distortions,u_uid FROM ant_queue WHERE r_uid=0 LIMIT 1");
+	function get_ant_for_review() {
+		$query = sprintf("SELECT ant,event,u_distortions,u_uid FROM ant_queue ORDER BY review_count ASC LIMIT 1");
 		$res = mysql_query($query);
 		$row = mysql_fetch_assoc($res);
 		return $row;
@@ -131,7 +131,7 @@ class DB {
 	}
 	
 	function update_ant($u_uid, $ant,$event,$u_distortions, $r_uid, $r_distortions, $r_comments) {
-		$query = sprintf("UPDATE ant_queue SET r_uid=%d,r_distortions='%s',r_comments='%s' WHERE u_uid=%d AND event='%s' AND u_distortions='%s'", $r_uid,mysql_real_escape_string($r_distortions),mysql_real_escape_string($r_comments),$u_uid,mysql_real_escape_string($event),mysql_real_escape_string($u_distortions));
+		$query = sprintf("UPDATE ant_queue SET r_uid=%d,r_distortions='%s',r_comments='%s',review_count=review_count+1 WHERE u_uid=%d AND event='%s' AND u_distortions='%s'", $r_uid,mysql_real_escape_string($r_distortions),mysql_real_escape_string($r_comments),$u_uid,mysql_real_escape_string($event),mysql_real_escape_string($u_distortions));
 		mysql_query($query);
 		return;		
 	}

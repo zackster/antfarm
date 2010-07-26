@@ -8,7 +8,8 @@ require_once('DB.php');
 $db = new DB();
 
 //ant event u_distortions
-$ant = $db->get_unreviewed_ant($_SESSION['uid']);
+$ant = $db->get_ant_for_review();
+print_r($ant);
 //TODO: what happens when there are no available ants for review?
 ?>
 <html>
