@@ -179,14 +179,20 @@ else {
 				// eliminating the <i> and </i> ... 
 				// TODO: refactor so that the container applies the formatting and we don't have to string manipulate					
 			}
-			distortion1string = distortion1string.slice(0,-1);
+			if(distortion1string.length > 1) {
+				distortion1string = distortion1string.slice(0,-1);				
+			}
+
 
 
 			distortion2string = '';
 			for(var i=0;i<distortion2.length;i++) {
 				distortion2string += distortion2[i].substr(3,distortion2[i].length-7) + ','; 
 			}
-			distortion2string = distortion2string.slice(0,-1);
+			if(distortion2string.length > 1) {
+				distortion2string = distortion2string.slice(0,-1);				
+			}
+
 			
 			save_data['distortion1'] = distortion1string;
 			save_data['distortion2'] = distortion2string; 					
