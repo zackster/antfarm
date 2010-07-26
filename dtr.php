@@ -46,7 +46,9 @@ function render_emotion_options() {
 	<script type="text/javascript" src="utilities.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
-		
+		<?php if($demo_mode) { ?>
+		alert('')
+		<?php } ?>
 
 			
 		$("#fact-event-impact").hide();
@@ -143,6 +145,7 @@ function render_emotion_options() {
 		});
 		
 		<?php if($demo_mode) { ?>
+			alert('Welcome to the demo. Creating an account has many benefits, including getting anonymous feedback on your distortion assessments');
 		username = prompt("What is your name?");		
 		<?php } else { ?>
 		username = '<?php echo htmlentities($_SESSION['username']); ?>';
