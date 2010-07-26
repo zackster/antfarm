@@ -60,10 +60,10 @@ if(isset($_REQUEST['r'])) {
 <?php }	elseif(isset($_GET['regerr'])) { ?>
 		$("#error_message").show();
 		$("#error_message").html('Please enter a unique username and email address.');
-<?php } elseif(isset($_GET['demo'])) {
+<?php } elseif(isset($_GET['demo'])) { ?>
 		$("#error_message").show();
 		$("#error_message").html('You have already checked out the demo. Please make a free account to continue using the product.');
-}?>
+<? } ?>
 	
 	});
 	</script>
