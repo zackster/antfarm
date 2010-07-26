@@ -195,7 +195,7 @@ else {
 
 			
 			save_data['distortion1'] = distortion1string;
-			save_data['distortion2'] = distortion2string; 					
+			save_data['distortion2'] = distortion2string;
 			$.post('save.php', save_data, function(new_rank) {
 				rank_differential = session_data['initial_rank']-new_rank;
 				alertmsg = 'Congratulations! Your EndAnts rank is now ' + new_rank + '.';
