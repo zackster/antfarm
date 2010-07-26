@@ -9,7 +9,16 @@ $db = new DB();
 
 //ant event u_distortions
 $ant = $db->get_ant_for_review();
-print_r($ant);
+if(count($ant)==0) {
+	echo <<<NOANTS
+	
+<script type="text/javascript">
+alert('Sorry - there are no ANTs available for review at this time.');
+window.location = 'home.php';
+</script>
+
+NOANTS;
+}
 //TODO: what happens when there are no available ants for review?
 ?>
 <html>
