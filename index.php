@@ -13,6 +13,7 @@ if(isset($_REQUEST['r'])) {
 <head>
 	<title>Destroy Automatic Negative Thoughts</title>
 	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="utilities.js"></script>
 	<script type="text/javascript" src="jquery.js"></script>	
 	<script>
 	function showRegistration() {
@@ -28,7 +29,7 @@ if(isset($_REQUEST['r'])) {
 		$("#login_form").submit();
 	}
 	function registerUser() {
-		var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-\+]+[a-zA-Z0-9_-\+]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
+		var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
 		if($("#reg_password").val().length < 3) {
 			alert('Your password is too short. It must be at least 3 characters.');
 			return false;
@@ -37,7 +38,9 @@ if(isset($_REQUEST['r'])) {
 			alert('Please enter a username.');
 			return false;
 		}
-		if(filter.test($("#reg_email").val())) {
+//		if(filter.test($("#reg_email").val()) || $("#reg_email").val().indexOf('+')!=-1) {
+//		if($("#reg_email").val().indexOf('@') !=-1 && $("#reg_email").val().indexOf('.')!=-1) { 
+		if(validEmail($("#reg_email").val())) {
 			$("#reg_form").submit();
 		}
 		else {

@@ -22,3 +22,9 @@ String.prototype.capitalize = function() {
 function distortionPopup() {
 	window.open("assuming-popup.html","Distortion Explanations","height=500,width=530,scrollbars=1");
 }
+
+function validEmail(email) 
+{ 
+ var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+ return email.match(re);
+}
