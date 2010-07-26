@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('utilities.php');
 if(isset($_GET['debug'])) { $_SESSION['emotions']=array(0=>array('emotion'=>'annoyed', 'intensity'=>6)); }
 $demo_mode = false;
 if(isset($_GET['demo_mode'])) {
@@ -276,6 +277,7 @@ else {
 	
 	</script>
 	<title>Analysis Section</title>
+	<?php add_google_analytics_tracking(); ?>	
 </head>
 <h1>Analysis of Your Thoughts</h1>
 <div class="hud">

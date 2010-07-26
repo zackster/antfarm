@@ -1,5 +1,5 @@
 <?php
-
+require_once('utilities.php');
 if(!isset($_COOKIE['source'])) {
 	if(isset($_SERVER['HTTP_REFERER'])) {
 		setcookie('source', $_SERVER['HTTP_REFERER'], time()+60*60*24*30);		
@@ -62,11 +62,12 @@ if(isset($_REQUEST['r'])) {
 		$("#error_message").html('Please enter a unique username and email address.');
 <?php } elseif(isset($_GET['demo'])) { ?>
 		$("#error_message").show();
-		$("#error_message").html('You have already checked out the demo. Please make a free account to continue using the product.');
+		$("#error_message").html('You have already checked out the demo. Please make a free account to continue using the tool.');
 <? } ?>
 	
 	});
 	</script>
+<?php add_google_analytics_tracking(); ?>	
 </head>
 <img src="images/logo.jpg" align="right">
 <div id="error_message">

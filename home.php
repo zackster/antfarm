@@ -47,6 +47,7 @@ else {
 
 		</script>
 		<title>EndANTs | Home</title>
+		<?php add_google_analytics_tracking(); ?>	
 	</head>	
 	<body>
 		<ul class="navbar">

@@ -5,6 +5,7 @@ if(!isset($_SESSION['logged_in'])) {
 	return;
 }
 require_once('DB.php');
+require_once('utilities.php');
 $db = new DB();
 
 //ant event u_distortions
@@ -69,7 +70,7 @@ NOANTS;
 	});
 	
 	</script>
-	
+	<?php add_google_analytics_tracking(); ?>	
 </head>
 <body>
 	<h2>Anonymous Event &amp; Negative Thought</h2>

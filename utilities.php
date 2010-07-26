@@ -14,7 +14,7 @@ function draw_leaderboard() {
 	echo '</table>';	
 }
 
- function format_distortions(&$array, $useOxfordComma = false) {
+function format_distortions(&$array, $useOxfordComma = false) {
     $count = (is_array($array) ? count($array) : 0);
     if (3 <= $count) {
         $last = end($array);
@@ -33,6 +33,24 @@ function draw_leaderboard() {
             
     reset($array);
     return $list;
+}
+
+function add_google_analytics_tracking() {
+echo <<<GOOG
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17638356-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+GOOG;
 }
 
 ?>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require_once('utilities.php');
 
 if(isset($_COOKIE['demo_mode'])) {
 	header('Location: index.php?demo');
@@ -155,6 +155,7 @@ function render_emotion_options() {
 	});
 	</script>
 	<title>Anti-Distortion Fun</title>
+	<?php add_google_analytics_tracking(); ?>	
 </head>
 <body>
 <div class="hud">
