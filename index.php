@@ -71,6 +71,7 @@ if(isset($_REQUEST['r'])) {
 </div>
 <h1> What are negative thoughts?</h1>
 <p>Negative thoughts are the enemy of happiness. Since our life is very much determined by our mind, our thoughts can make or break our life. Negative thoughts will distract your focus from what's important and will drain your energy.<br />Most of the time, they happen automatically.</p>
+<h1>Why should I care about eliminating them?</h1>
 <h2>Thinking Realistic &amp; Positive Makes Us Happier</h2>
 <p>Optimists will...</p>
 <ul id="optimism-benefits">

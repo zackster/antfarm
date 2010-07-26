@@ -6,6 +6,7 @@ session_start();
 if(isset($_GET['logout'])) {
 	session_destroy();
 	header('Location: index.php');
+	return;
 }
 
 $db = new DB();
@@ -20,6 +21,7 @@ else {
 	$_SESSION['username'] = $credentials['username'];
 	$_SESSION['logged_in'] = true;
 	header('Location: home.php');
+	return;
 }
 
 ?>
