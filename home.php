@@ -112,7 +112,7 @@ $("#li-notifications").html('<a href="home.php?page=notifications">Notifications
 		Karma Quests:
 		<ul>
 			<li><a href="dtr.php">Correct some of your own Automatic Negative Thoughts</a>: <em>200 pts</em></li>
-			<li>(Anonymously) <a href="antreview.php">review someone else's Automatic Negative Thoughts</a>: <em>200 pts for you, 10 pts for them</em></li>
+			<li>(Anonymously) <a href="antreview.php">review someone else's Automatic Negative Thoughts</a>: <em>40 pts for you, 10 pts for them</em></li>
 			<li><a href="#" id="invitation_link">Invite a friend to EndAnts</a>: <em>10 pts per friend</em></li>
 		</p>
 
