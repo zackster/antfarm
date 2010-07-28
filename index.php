@@ -13,7 +13,7 @@ if(isset($_REQUEST['r'])) {
 <head>
 	<meta name="title" content="EndAnts: Get in touch with reality" />
 	<meta name="description" content="EndAnts is a fun app that makes you happier by destroying Automatic Negative Thoughts." />
-	<link rel="thumbnail_image" href="http://endants.com/images/logo.jpg" / >		 
+	<link rel="image_src" href="http://endants.com/images/logo.jpg" / >		 
 	<link rel="shortcut icon" href="http://endants.com/images/favicon.ico" />
 	<title>Destroy Automatic Negative Thoughts</title>
 	<link rel="stylesheet" href="style.css">
