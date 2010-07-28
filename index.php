@@ -159,9 +159,18 @@ if(isset($_REQUEST['r'])) {
 				<input type="password" name="reg_password" class="field" id="reg_password">								
 			</p>
 
+
+			<p class="field">
+				<label class="field">notifications</label>
+				<input type="checkbox" name="email_updates" checked> send me updates about great new features<br />
+				<span style="font-size:.8em"><i>we will <u>never</u> spam you or sell your email</i></span>
+			</p>
+			
 			<p class="field">
 				<label class="field"><a href="#" onclick="registerUser()">Register</a></label>
 			</p>
+			
+
 			
 		</fieldset>
 	</form>
