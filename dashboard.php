@@ -4,15 +4,7 @@ require_once('DB.php');
 require_once('googleanalytics.class.php');
 $db = new DB();
 
-$regcount = $db->dashboard_get_registration_count();
-echo '<table>';
-foreach($regcount as $day) {
-	echo '<tr>';
-	echo "<td>{$day['registration_date']}</td>";
-	echo "<td>{$day['registration_count']}</td>";
-	echo '</tr>';
-}
-echo '</table>';
+
 
 /*
 
@@ -39,13 +31,15 @@ revisit_rate = revisit_count/user_count
 
 */
 
+$date_data = array();
+
 try {
 	$ga = new GoogleAnalytics('zackster@gmail.com','happyd0nuts');
 
 	// set the Google Analytics profile you want to access - format is 'ga:123456';
 	$ga->setProfile('ga:35050130');
 	// set the date range we want for the report - format is YYYY-MM-DD
-	$ga->setDateRange('2010-07-26','2010-07-27');
+	$ga->setDateRange('2010-07-26',date('Y-m-d'));
 
 	$report = $ga->getReport(
 		array('dimensions'=>urlencode('ga:date'),
@@ -56,13 +50,29 @@ try {
 		);
 
 	
-	foreach($report as $day) {
+	foreach($report as $day=>$data) {
+		$day = date('F j Y',strtotime($day));
+		$date_data[$day]['pageviews'] = $data['ga:pageviews'];
+		$date_data[$day]['visits'] = $data['ga:visits'];
 	}
 	
 } catch (Exception $e) { 
 	print 'Error: ' . $e->getMessage(); 
 }
 
+
+$regcount = $db->dashboard_get_registration_count();
+echo '<table border=1>';
+echo '<thead><th>Date</th><th>Registration Count</th><th>Pageviews</th><th>Visits</th></thead>';
+foreach($regcount as $day) {	
+	echo "<tr>\n";
+	echo "<td>{$day['registration_date']}</td>\n";
+	echo "<td>{$day['registration_count']}</td>\n";
+	echo "<td>" . @$date_data[$day['registration_date']]['pageviews'] . "</td>\n";
+	echo "<td>" . @$date_data[$day['registration_date']]['visits'] . "</td>\n";
+	echo "</tr>\n";
+}
+echo '</table>';
 
 
 ?>
