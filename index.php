@@ -12,9 +12,9 @@ if(isset($_REQUEST['r'])) {
 ?><html>
 <head>
 	<meta name="title" content="EndAnts: Get in touch with reality" />
-	<meta name="description" content="EndAnts is a fun app that makes you happier and helps you eliminate thinking distortions." />
-<!--		<link rel="image_src" href="thumbnail_image" / >		 -->
-
+	<meta name="description" content="EndAnts is a fun app that makes you happier by destroying Automatic Negative Thoughts." />
+	<link rel="http://endants.com/images/logo.jpg" href="thumbnail_image" / >		 
+	<link rel="shortcut icon" href="http://endants.com/images/favicon.ico" />
 	<title>Destroy Automatic Negative Thoughts</title>
 	<link rel="stylesheet" href="style.css">
 	<script type="text/javascript" src="utilities.js"></script>

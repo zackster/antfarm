@@ -126,6 +126,7 @@ $("#li-notifications").html('<a href="home.php?page=notifications">Notifications
 			<label class="invitation">Copy and paste this URL to a friend:</label>
 			<input type="text" class="highlight_onclick" size=50 value="<?php echo $curpath; ?>?r=<?php echo $_SESSION['uid']; ?>"  /><br />
 			<label class="invitation">If your friend signs up for an account after using your URL, you will automatically be credited with 10 karma points.</label>
+			<br /><br />
 			<a name="fb_share" type="button" share_url="http://www.endants.com/index.php?r=<?php echo $_SESSION['uid']; ?>" href="http://www.facebook.com/sharer.php">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
 		</div>
 		
