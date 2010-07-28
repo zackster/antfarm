@@ -1,8 +1,13 @@
 <?php
 
+require_once('config.php');
 require_once('DB.php');
-require_once('googleanalytics.class.php');
+require_once('thirdparty/googleanalytics.class.php');
+require_once('thirdparty/mailchimp.class.php');
+
 $db = new DB();
+
+
 
 
 
@@ -30,6 +35,8 @@ revisit_rate = revisit_count/user_count
 // revenue
 
 */
+
+echo '<h1>Traffic Data</h1>';
 
 $date_data = array();
 
@@ -74,5 +81,35 @@ foreach($regcount as $day) {
 }
 echo '</table>';
 
+
+echo '<h1>Mailing List Data</h1>';
+
+$api = new MCAPI($mailchimp_api_key);
+
+$retval = $api->lists();
+
+if ($api->errorCode){
+	echo "Unable to load lists()!";
+	echo "\n\tCode=".$api->errorCode;
+	echo "\n\tMsg=".$api->errorMessage."\n";
+} else {
+	echo '<table border=1>';
+	echo '<thead><th>List ID</th><th>List Name</th><th>List Web ID</th><th>List Member Count</th><th>List Unsubscribe Count</th><th>List Cleaned Count</th></thead>';
+
+	foreach ($retval as $list){
+		echo '<tr>';
+		echo "<td>{$list['id']}</td>";
+		echo "<td>{$list['name']}</td>";
+		echo "<td>{$list['web_id']}</td>";				
+		echo "<td>{$list['member_count']}</td>";
+		echo "<td>{$list['unsubscribe_count']}</td>";
+		echo "<td>{$list['cleaned_count']}</td>";
+		echo '</tr>';
+	}
+	
+	echo '</table>';
+}
+
+die;
 
 ?>

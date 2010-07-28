@@ -1,5 +1,8 @@
 <?php
 require_once('DB.php');
+require_once('thirdparty/mailchimp.class.php');
+require_once('config.php');
+
 session_start();
 
 if(strlen($_POST['reg_email']) == 0 || strlen($_POST['reg_username']) == 0) {
@@ -28,6 +31,16 @@ else {
 	
 	$_SESSION['username'] = $_POST['reg_username'];
 	$_SESSION['logged_in'] = true;
+	
+	
+	// mailchimp stuff
+	$api = new MCAPI($mailchimp_api_key);
+	$listId = '02aeb1161b'; // this is the "EndAnts Alpha Users" list.
+	$merge_vars = array('USERNAME' => $_POST['reg_username']); 
+	$subscriber_email = $_POST['reg_email'];
+	$retval = $api->listSubscribe( $listId, $subscriber_email, $merge_vars );
+
+
 
 	header('Location: home.php');	
 }

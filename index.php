@@ -13,15 +13,15 @@ if(isset($_REQUEST['r'])) {
 <head>
 	<meta name="title" content="EndAnts: Get in touch with reality" />
 	<meta name="description" content="EndAnts is a fun app that makes you happier by destroying Automatic Negative Thoughts." />
-	<link rel="image_src" href="http://endants.com/images/logo.jpg" / >		 
-	<link rel="shortcut icon" href="http://endants.com/images/favicon.ico" />
+	<link rel="image_src" href="http://www.endants.com/images/logo.jpg" / >		 
+	<link rel="shortcut icon" href="http://www.endants.com/images/favicon.ico" />
 	<title>Destroy Automatic Negative Thoughts</title>
 	<link rel="stylesheet" href="style.css">
 	<script type="text/javascript" src="utilities.js"></script>
 	<script type="text/javascript" src="jquery.js"></script>	
-	<script type="text/javascript" src="galleria/galleria.js"></script>
+	<script type="text/javascript" src="thirdparty/galleria/galleria.js"></script>
 	<script type="text/javascript">
-	Galleria.loadTheme('galleria/themes/lightbox/galleria.lightbox.js');
+	Galleria.loadTheme('thirdparty/galleria/themes/lightbox/galleria.lightbox.js');
 	Galleria.debug = true;
 	</script>	
 	<script>
@@ -178,11 +178,15 @@ if(isset($_REQUEST['r'])) {
 	
 	<center>
 	<label>
-			Built by <a href="http://www.zacharyburt.com" target="_blank">Zachary Burt</a>. Contact me at zackster<b>@</b>gmail.<span>com</span>.
+		Built by <a href="http://www.zacharyburt.com" target="_blank">Zachary Burt</a>. Contact me at zackster<b>@</b>gmail.<span>com</span>.
+		<a href="http://www.endants.com/blog/" target="_blank">EndAnts blog</a>
 	</label>
 	</center>
-	<script type="text/javascript" src="http://endants.com/clickheat/js/clickheat.js"></script><noscript></noscript><script type="text/javascript"><!-- clickHeatSite = 'endants';clickHeatGroup = 'group1';clickHeatServer = 'http://endants.com/clickheat/click.php';initClickHeat(); //-->
-	</script>
+	<hr>
 	
+
+	<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.endants.com&amp;layout=standard&amp;show_faces=false&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowTransparency="true" align="middle"></iframe>
+	
+
 </body>
 </html>
