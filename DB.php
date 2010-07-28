@@ -73,6 +73,16 @@ class DB {
 		return mysql_insert_id();		
 	}
 	
+	function dashboard_get_registration_count() {
+		$query = "select count(*) as registration_count,date_format(reg_date,'%M %e %Y') as registration_date from users group by registration_date";
+		$res = mysql_query($query);
+		$ret = array();
+		while($row = mysql_fetch_assoc($res)) {
+			array_push($ret,$row);			
+		}
+		return $ret;
+	}
+	
 	function get_notifications($uid) {
 		$query = sprintf("SELECT message,add_date FROM notification_queue WHERE uid=%d AND is_read=0 ORDER BY add_date desc", $uid);
 		$res = mysql_query($query);
