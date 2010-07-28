@@ -25,6 +25,9 @@ else {
 ?>
 <html>
 	<head>
+		<meta name="title" content="EndAnts: Get in touch with reality" />
+		<meta name="description" content="EndAnts is a fun app that makes you happier and helps you eliminate thinking distortions." />
+<!--		<link rel="image_src" href="thumbnail_image" / >		 -->
 		<link rel="stylesheet" href="style.css" />
 		<script type="text/javascript" src="jquery.js"></script>
 		<script>
@@ -120,8 +123,10 @@ $("#li-notifications").html('<a href="home.php?page=notifications">Notifications
 
 
 		<div id="invitation_field">
+			<label class="invitation">Copy and paste this URL to a friend:</label>
 			<input type="text" class="highlight_onclick" size=50 value="<?php echo $curpath; ?>?r=<?php echo $_SESSION['uid']; ?>"  /><br />
 			<label class="invitation">If your friend signs up for an account after using your URL, you will automatically be credited with 10 karma points.</label>
+			<a name="fb_share" type="button" share_url="http://www.endants.com/index.php?r=<?php echo $_SESSION['uid']; ?>" href="http://www.facebook.com/sharer.php">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
 		</div>
 		
 <?php } // end:home_step is not leaderboard... ?>
