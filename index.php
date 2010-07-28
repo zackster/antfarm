@@ -162,7 +162,7 @@ if(isset($_REQUEST['r'])) {
 
 			<p class="field">
 				<label class="field">notifications</label>
-				<input type="checkbox" name="email_updates" checked> send me updates about great new features<br />
+				<input type="checkbox" name="email_updates" checked> send me updates about major changes<br />
 				<span style="font-size:.8em"><i>we will <u>never</u> spam you or sell your email</i></span>
 			</p>
 			
