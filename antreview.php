@@ -75,10 +75,10 @@ NOANTS;
 <body>
 	<h2>Anonymous Event &amp; Negative Thought</h2>
 	<span class="anonymous-desc">
-		<label>Event</label>: &quot;<b><?php echo $ant['event']; ?></b>&quot;<br />
+		<label>Event</label>: &quot;<b><?php echo stripslashes(htmlentities($ant['event'])); ?></b>&quot;<br />
 	</span>
 	<span class="anonymous-desc">
-		<label>Automatic Thought</label>: &quot;<em><?php echo $ant['ant']; ?></em>&quot;
+		<label>Automatic Thought</label>: &quot;<em><?php echo stripslashes(htmlentities($ant['ant'])); ?></em>&quot;
 	</span>
 	<h2>What distortions do you detect?</h2>
 	

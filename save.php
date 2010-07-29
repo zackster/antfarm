@@ -28,11 +28,27 @@ elseif($_POST['type'] == 'ants') {
 	return;
 }
 elseif($_POST['type'] == 'antreview') {
-	//TODO: implement a format_distortions function
 	$db->update_ant($_POST['u_uid'], $_POST['ant'],$_POST['event'],$_POST['u_distortions'], $_POST['r_uid'], $_POST['r_distortions'], $_POST['comments']);	
 	$db->award_exp($_POST['r_uid'], 'ant review', 40);
 	$db->award_exp($_POST['u_uid'], 'beneficiary of ant review', 10);
 	$db->insert_notification($_POST['u_uid'], 'One of your anonymous ANTs was anonymously reviewed. Event: <b>' . $_POST['event'] . '</b>. Your automatic thought: "<b>' . $_POST['ant'] . '</b>". Distortions you observed: <i>' . format_distortions(explode(',',$_POST['u_distortions']),true) . '</i>. Your reviewer (unaware of the distortions you indicated) the distortions observed these distortions: <i>' . format_distortions(explode(',', $_POST['r_distortions']),true) . '</i>, and had this to say: "<b>' . $_POST['comments']. '</b>".');
+	
+	$formatted_distortions = format_distortions(explode(',', $_POST['r_distortions']),true);
+	$ant_noslash = stripslashes($_POST['ant']);
+	$event_noslash = stripslashes($_POST['event']);
+	$subject = 'Someone has reviewed one of your negative thoughts on EndAnts';
+	$message = <<<MESSAGE
+Your negative thought was "{$ant_noslash}". 
+It was triggered by the event "{$event_noslash}". 
+
+An anonymous reviewer found that your thought contained the distortions of {$formatted_distortions}. The anonymous reviewer also had this to say:
+
+	>{$_POST['comments']}
+
+NOTE: You can log into your account at http://www.endants.com to see your new leaderboard rank, correct more of your automatic negative thoughts, or even disable these emails.
+MESSAGE;
+	send_email_notification($_POST['u_uid'], $subject, $message);
+	
 	list($rank, $total) = $db->calculate_rank($user);
 	echo $rank;
 	return;

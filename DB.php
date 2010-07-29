@@ -91,6 +91,13 @@ class DB {
 		return $ret;
 	}
 	
+	function get_email_address($user) {
+		$query = sprintf("SELECT email FROM users WHERE id=%d", $user);
+		$res = mysql_query($query);
+		$row = mysql_fetch_assoc($res);
+		return $row['email'];
+	}
+	
 
 	function get_notifications($uid) {
 		$query = sprintf("SELECT message,add_date FROM notification_queue WHERE uid=%d AND is_read=0 ORDER BY add_date desc", $uid);

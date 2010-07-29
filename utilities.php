@@ -53,4 +53,15 @@ echo <<<GOOG
 GOOG;
 }
 
+function send_email_notification($user, $subject, $message) {
+	$db = new DB();
+	$to = $db->get_email_address($user);	
+	$headers = 'From: notifications@endants.com' . "\r\n" .
+	    'Reply-To: zachary@endants.com' . "\r\n" .
+	    'X-Mailer: PHP/' . phpversion();
+
+	mail($to, $subject, $message, $headers);
+	
+}
+
 ?>
