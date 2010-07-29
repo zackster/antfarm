@@ -305,3 +305,6 @@ span#cbt_review {
 	padding-left: 10px;
 	display: block;
 }
+span#settings-saved-confirmation {
+	display:block;	
+}

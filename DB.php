@@ -12,6 +12,14 @@ class DB {
             return;
     }
 
+	function are_email_notifications_disabled($uid) {
+		$query = sprintf("SELECT disable_email_notifications FROM users WHERE id=%d", $uid);
+		$res = mysql_query($query);
+		$row = mysql_fetch_assoc($res);
+		return $row['disable_email_notifications'];
+	}
+
+
 	function award_exp($uid,$act,$exp_value) {
 		$query = sprintf("INSERT INTO experience (uid,act,value) VALUES (%d,'%s',%d)", $uid,mysql_real_escape_string($act),$exp_value);
 		mysql_query($query);
@@ -83,6 +91,7 @@ class DB {
 		return $ret;
 	}
 	
+
 	function get_notifications($uid) {
 		$query = sprintf("SELECT message,add_date FROM notification_queue WHERE uid=%d AND is_read=0 ORDER BY add_date desc", $uid);
 		$res = mysql_query($query);
@@ -145,6 +154,14 @@ class DB {
 		mysql_query($query);
 		return;		
 	}
+
+	function update_email_settings($user, $disable_emails) {
+		$query = sprintf("UPDATE users SET disable_email_notifications=%d WHERE id=%d", $disable_emails, $user);
+		echo $query;
+		mysql_query($query);
+		return;
+	}
+
 
 }
 

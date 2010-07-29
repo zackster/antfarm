@@ -38,5 +38,8 @@ elseif($_POST['type'] == 'antreview') {
 	return;
 	
 }
-
+elseif($_POST['type'] == 'usersettings') {
+	$db->update_email_settings($user, $_POST['disable_emails']);
+	return;
+}
 ?>

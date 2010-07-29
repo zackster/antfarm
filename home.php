@@ -30,6 +30,7 @@ else {
 		<script>
 		$(document).ready(function() {
 			
+			
 			$("#li-<?php echo $home_step; ?>").addClass('selected');
 
 			$(".highlight_onclick").bind("click focus", function(e) {
@@ -40,6 +41,26 @@ else {
 				$("#invitation_field").show();
 			}, function() {
 				$("#invitation_field").hide();
+			});
+			
+			$("#settings-saved-confirmation").hide();
+			var disable_emails = 0;
+			$("#save-settings").click(function() {
+				if($("#enable-emails").is(':checked')) {
+					disable_emails = 0;
+				} else {
+					disable_emails = 1;
+				}
+				
+				save_data = new Object();
+				save_data['type'] = 'usersettings';
+				save_data['disable_emails'] = disable_emails;
+				$.post('save.php', save_data, function(complete) {
+					$("#settings-saved-confirmation").show();
+					$("#settings-saved-confirmation").fadeOut(5000, function() {
+						$(this).hide();
+					});
+				});
 			});
 
 		});
@@ -54,6 +75,7 @@ else {
 			<li id="li-activities"><a href="home.php">Activities</a></li>
 			<li id="li-notifications"><a href="home.php?page=notifications">Notifications (<?php echo $db->get_notification_count($_SESSION['uid']); ?>)</a></li>
 			<li id="li-leaderboard"><a href="home.php?page=leaderboard">Leaderboard</a></li>
+			<li id="li-settings"><a href="home.php?page=settings">Settings</a></li>
 			<li><a href="login.php?logout">Logout</a></li>
 		</ul>	
 
@@ -90,7 +112,26 @@ $("#li-notifications").html('<a href="home.php?page=notifications">Notifications
 ?>
 </div>
 	
-<?php } else { ?>		
+<?php } elseif($home_step == 'settings') {
+	
+	$disable_emails = $db->are_email_notifications_disabled($_SESSION['uid']);
+	$disable_emails_checked = '';
+	if($disable_emails == 0) {
+		$disable_emails_checked = 'checked';
+	}
+
+?>
+
+<div id="notification-box">
+	<input type="checkbox" id="enable-emails" <?php echo $disable_emails_checked; ?> /> 
+	<label>receive an email notification when someone anonymously reviews one of your distortions</label>
+	<br />
+	<button id="save-settings">save settings</button>
+	<span id="settings-saved-confirmation">settings saved</span>
+</div>	
+	
+	
+<?	} else { ?>		
 		
 		<div class="home-hud">
 			<span class="profile-thumb"><img src="images/alert-overlay.png" height="50" width="50"></span>
