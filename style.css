@@ -378,7 +378,8 @@ div#endants-main-content {
 	float: left;
 	margin: 0;
 	padding: 0;
-	width: 50%;
+	margin-top: 30px;
+	width: 70%;
 }
 
 
@@ -404,4 +405,36 @@ button.login-button {
 button:hover {
 	background-color: #0057BF;
 }
+div#content-shadow {
 
+	text-align: center;
+background: #F4F4F4;	
+clear: both;
+margin: 0px auto;
+}
+input.tryit {
+	border:2px solid #DADADA;
+	font:bold 13px 'Lucida Grande','Arial','Helvetica',sans-serif;
+	padding:5px 3px;
+	width:300px;
+	text-align: center;
+	margin: 0px auto;
+}
+button.tryit-button {
+	-moz-box-shadow:0 1px 3px rgba(0, 0, 0, 0.5);
+	background:url("/images/alert-overlay.png") repeat-x scroll 0 0 #555555;
+	border-color:#555555 #555555 rgba(0, 0, 0, 0.25);
+	border-style:solid;
+	border-width:0 0 1px;
+	color:#FFFFFF;
+	cursor:pointer;
+	font-weight:bold;
+	text-shadow:0 -1px 1px rgba(0, 0, 0, 0.25);
+	vertical-align:top;
+	-moz-border-radius:7px 7px 7px 7px;
+	background-color:#0267CC;
+	margin-top: 0px !important;
+	padding: 3px 30px !important;
+	font-size:1em;
+	margin-right:0;
+}

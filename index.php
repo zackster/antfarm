@@ -140,13 +140,21 @@ if(isset($_REQUEST['r'])) {
 				<img src="images/Picture 14-cropped.png">	
 				<img src="images/Picture 15-cropped.png">
 			</div>
+			<label style="text-align: center">Screenshots of EndAnts</label>
 			
 		</div>
 		<div id="endants-main-content">
-			<h1>EndAnts makes you feel better</h1>
-			<h2>What's been troubling you lately?</h2>
-			<input id="tryit_field"><button id="tryit_demo">Try It</button>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.			
+			<div id="content-shadow">
+				<h1>EndAnts makes you feel better</h1>
+				<h3>What's been troubling you lately?</h3>
+				<input id="tryit-field" class="tryit">
+				<button class="tryit-button" id="tryit-demo">Get Started</button>
+			</div>
+			<div id="content-explanation">
+<br />		
+
+
+			</div>
 		</div>
 		
 		
