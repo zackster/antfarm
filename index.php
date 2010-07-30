@@ -21,7 +21,7 @@ if(isset($_REQUEST['r'])) {
 	<script type="text/javascript" src="jquery.js"></script>	
 	<script type="text/javascript" src="thirdparty/galleria/galleria.js"></script>
 	<script type="text/javascript">
-	Galleria.loadTheme('thirdparty/galleria/themes/lightbox/galleria.lightbox.js');
+	Galleria.loadTheme('thirdparty/galleria/themes/dots/galleria.dots.js');
 	Galleria.debug = true;
 	</script>	
 	<script>
@@ -34,9 +34,7 @@ if(isset($_REQUEST['r'])) {
 		$("#registration_field").hide();
 	}
 	
-	function loginUser() {
-		$("#login_form").submit();
-	}
+
 	function registerUser() {
 		var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
 		if($("#reg_password").val().length < 3) {
@@ -64,6 +62,10 @@ if(isset($_REQUEST['r'])) {
 			debug: true
 		});
 		
+		$("button.login-button").click(function() {
+			$("#login_form").submit();	
+		});
+		
 //		$("#login_field").hide();
 		$("#registration_field").hide();
 		$("#cbt_review").hide();
@@ -72,6 +74,9 @@ if(isset($_REQUEST['r'])) {
 		}, function() {
 			$("#cbt_review").hide();
 		});
+
+
+
 
 <?php if(isset($_GET['badlogin'])) { ?>
 		$("#error_message").show();
@@ -99,18 +104,19 @@ if(isset($_REQUEST['r'])) {
 		<div id="endants-login-field">
 			<div id="login_field">
 				<form id="login_form" action="login.php" method="post">
-					<fieldset>
-						<p class="field">
-							<label class="login-field">email / username</label>
-							<input type="text" name="login_email" class="login-field" id="login_email">
-						</p>
-						<p class="field">
-							<label class="login-field">password</label>
-							<input type="password" name="login_password" class="login-field" id="login_password">								
-						</p>
-						<p class="field">
-							<label class="login-field"><a href="#" onclick="loginUser()">Log In</a></label>
-						</p>
+					<fieldset class="login-field">
+						<table>
+							<tr>
+								<td><input type="text" name="login_email" class="login-field" id="login_email"></td>
+								<td><input type="password" name="login_password" class="login-field" id="login_password"></td>
+								<td><button class="login-button">login</button></td>
+							</tr>
+							<tr>
+								<td><label class="login-field">email / username</label></td>
+								<td><label class="login-field">password</label></td>
+								<td> </td>
+							</tr>
+						</table>
 
 
 
@@ -123,7 +129,18 @@ if(isset($_REQUEST['r'])) {
 
 
 		<div id="screenshot-preview">
-			<img src="http://www.google.com/google.jpg" width=400 >
+
+			<div id="galleria-images">
+				<img src="images/Picture 8-cropped.png">
+				<img src="images/Picture 9-cropped.png">
+				<img src="images/Picture 10-cropped.png">
+				<img src="images/Picture 11-cropped.png">
+				<img src="images/Picture 12-cropped.png">
+				<img src="images/Picture 13-cropped.png">
+				<img src="images/Picture 14-cropped.png">	
+				<img src="images/Picture 15-cropped.png">
+			</div>
+			
 		</div>
 		<div id="endants-main-content">
 			<h1>EndAnts makes you feel better</h1>
@@ -151,16 +168,7 @@ if(isset($_REQUEST['r'])) {
 <h2>What does EndAnts do?</h2>
 <p>EndAnts lets you list out events that "made" you feel bad, and then the thoughts that you had in response to the events. It lets you find any automatic distortions in your thoughts and then leverage the power of community to help you correct them.</p>
 <h3>See some screenshots</h3>
-<div id="galleria-images">
-	<img src="images/Picture 8-cropped.png">
-	<img src="images/Picture 9-cropped.png">
-	<img src="images/Picture 10-cropped.png">
-	<img src="images/Picture 11-cropped.png">
-	<img src="images/Picture 12-cropped.png">
-	<img src="images/Picture 13-cropped.png">
-	<img src="images/Picture 14-cropped.png">	
-	<img src="images/Picture 15-cropped.png">
-</div>
+
 <p>EndAnts uses an approach similar to Cognitive Behavioral Therapy, which has been repeatedly found to be even more effective than antidepressants in the treatment of adult depression. <label id="cbt_source">(<u>Source</u>)</label> <span id="cbt_review"><br /><br /><i>Please see:</i> <br /><br />Butler, A.C., Chapman, J.E., Forman, E.M., &amp; Beck, A.T. (2006). The empirical status of cognitive-behavioral therapy: A review of meta-analyses. <i>Clinical Psychology Review, 26(1),</i> 17-31.</span> </p>
 
 <h2>Registration</h2>

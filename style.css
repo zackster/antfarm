@@ -330,27 +330,38 @@ div#endants-logo {
 	margin-left: 20px;
 }
 div#endants-login-field {
-	position: relative;
-	float: right;
-	right: 100px;
-	top: -100px;
+	position: absolute;	
+	top: 30px;
+	left: 760px;
 }
 input.login-field {
 	border:2px solid #DADADA;
 	display:block;
 	float:left;
 	font:bold 13px 'Lucida Grande','Arial','Helvetica',sans-serif;
-	padding:5px 7px;
-	width:236px;
+	padding:5px 3px;
+	width:150px;
 }
 label.login-field {
-	color:yellow;
+	color:lightgrey;
 	display:block;
-	float:left;
 	font: bold 13px 'Lucida Grande','Arial','Helvetica',sans-serif;
-	margin:15px 10px 0 0;
+	margin:5px 10px 0 0;
 	text-align:right;
-	width:107px;
+	width:150px;
+	text-align: left;
+}
+p.login-field {
+	margin:0 0 12px;
+	overflow:hidden;
+	position:relative;
+	width:282px;
+}
+
+fieldset.login-field {
+	border:0px;
+	padding:0 20px 10px;
+	width:282px;
 }
 div#endants-content {
 	max-width: 1200px;
@@ -359,7 +370,7 @@ div#endants-content {
 }
 div#screenshot-preview {
 	float: right;
-	width: 48%;
+	width: 30%;
 	margin: 0;
 	padding: 0;
 }
@@ -367,5 +378,30 @@ div#endants-main-content {
 	float: left;
 	margin: 0;
 	padding: 0;
-	width: 48%;
+	width: 50%;
 }
+
+
+
+button.login-button {
+	-moz-box-shadow:0 1px 3px rgba(0, 0, 0, 0.5);
+	background:url("/images/alert-overlay.png") repeat-x scroll 0 0 #555555;
+	border-color:#555555 #555555 rgba(0, 0, 0, 0.25);
+	border-style:solid;
+	border-width:0 0 1px;
+	color:#FFFFFF;
+	cursor:pointer;
+	font-weight:bold;
+	text-shadow:0 -1px 1px rgba(0, 0, 0, 0.25);
+	vertical-align:top;
+	-moz-border-radius:7px 7px 7px 7px;
+	background-color:#0267CC;
+	margin-top: 0px !important;
+	padding: 5px 30px !important;
+	font-size:1em;
+	margin-right:0;
+}
+button:hover {
+	background-color: #0057BF;
+}
+
