@@ -64,7 +64,7 @@ if(isset($_REQUEST['r'])) {
 			debug: true
 		});
 		
-		$("#login_field").hide();
+//		$("#login_field").hide();
 		$("#registration_field").hide();
 		$("#cbt_review").hide();
 		$("#cbt_source").toggle(function() {
@@ -92,7 +92,54 @@ if(isset($_REQUEST['r'])) {
 <?php add_google_analytics_tracking(); ?>	
 </head>
 <body>
-<img src="images/logo.jpg" align="right">
+	<div id="endants-header">
+		<div id="endants-logo">
+			<img src="images/endants-monotype.png">
+		</div>
+		<div id="endants-login-field">
+			<div id="login_field">
+				<form id="login_form" action="login.php" method="post">
+					<fieldset>
+						<p class="field">
+							<label class="login-field">email / username</label>
+							<input type="text" name="login_email" class="login-field" id="login_email">
+						</p>
+						<p class="field">
+							<label class="login-field">password</label>
+							<input type="password" name="login_password" class="login-field" id="login_password">								
+						</p>
+						<p class="field">
+							<label class="login-field"><a href="#" onclick="loginUser()">Log In</a></label>
+						</p>
+
+
+
+					</fieldset>
+				</form>
+			</div>	
+		</div>
+	</div>
+	<div id="endants-content">
+
+
+		<div class="screenshot-preview" style="float: right; width: 500px">
+			<img src="http://www.google.com/google.jpg" width=400 height=400>
+		</div>
+		<div class="endants-main-content" style="padding-right: 500px">
+			<h1>EndAnts makes you feel better</h1>
+			<h2>What's been troubling you lately?</h2>
+			<input id="tryit_field"><button id="tryit_demo">Try It</button>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.			
+		</div>
+		
+		
+	</div>
+</body>
+</html>
+
+	
+<?php 
+/*
 <div id="error_message">
 	Wrong username/password combination.
 </div>
@@ -123,26 +170,7 @@ if(isset($_REQUEST['r'])) {
 <button class="login" onclick="showLogin()">Log In</button>
 <?php // <button class="demo" onclick="javascript:window.location='dtr.php?demo_mode'">Demo</button> ?>
 <br /><br />
-<div id="login_field" class="field">
-	<form id="login_form" action="login.php" method="post">
-		<fieldset>
-			<p class="field">
-				<label class="field">email or username</label>
-				<input type="text" name="login_email" class="field" id="login_email">
-			</p>
-			<p class="field">
-				<label class="field">password</label>
-				<input type="password" name="login_password" class="field" id="login_password">								
-			</p>
-			<p class="field">
-				<label class="field"><a href="#" onclick="loginUser()">Log In</a></label>
-			</p>
-			
 
-
-		</fieldset>
-	</form>
-</div>
 <div id="registration_field" class="field">
 	<form id="reg_form" action="registration.php" method="post">
 		<fieldset>
@@ -196,6 +224,5 @@ if(isset($_REQUEST['r'])) {
 
 	<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.endants.com&amp;layout=standard&amp;show_faces=false&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowTransparency="true" align="middle"></iframe>
 	
-
-</body>
-</html>
+-->
+*/ ?>
