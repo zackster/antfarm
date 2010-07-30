@@ -114,7 +114,6 @@ $("#li-notifications").html('<a href="home.php?page=notifications">Notifications
 	
 <?php } elseif($home_step == 'settings') {
 	
-	var_dump($db->are_email_notifications_enabled($_SESSION['uid']));
 	$enable_emails_checked = '';
 	if($db->are_email_notifications_enabled($_SESSION['uid'])) {
 		$enable_emails_checked = 'checked';
@@ -123,7 +122,7 @@ $("#li-notifications").html('<a href="home.php?page=notifications">Notifications
 ?>
 
 <div id="notification-box">
-	<input type="checkbox" id="enable-emails" <?php echo $disable_emails_checked; ?> /> 
+	<input type="checkbox" id="enable-emails" <?php echo $enable_emails_checked; ?> /> 
 	<label>receive an email notification when someone anonymously reviews one of your distortions</label>
 	<br />
 	<button id="save-settings">save settings</button>
