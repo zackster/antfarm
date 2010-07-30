@@ -122,10 +122,10 @@ if(isset($_REQUEST['r'])) {
 	<div id="endants-content">
 
 
-		<div class="screenshot-preview" style="float: right; width: 500px">
-			<img src="http://www.google.com/google.jpg" width=400 height=400>
+		<div id="screenshot-preview">
+			<img src="http://www.google.com/google.jpg" width=400 >
 		</div>
-		<div class="endants-main-content" style="padding-right: 500px">
+		<div id="endants-main-content">
 			<h1>EndAnts makes you feel better</h1>
 			<h2>What's been troubling you lately?</h2>
 			<input id="tryit_field"><button id="tryit_demo">Try It</button>

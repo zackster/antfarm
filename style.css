@@ -353,11 +353,19 @@ label.login-field {
 	width:107px;
 }
 div#endants-content {
+	max-width: 1200px;
+	margin: 0;
+	padding: 0;
 }
 div#screenshot-preview {
 	float: right;
-	width: 500px;
+	width: 48%;
+	margin: 0;
+	padding: 0;
 }
 div#endants-main-content {
-	padding-right: 500px;
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 48%;
 }
