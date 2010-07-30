@@ -114,6 +114,7 @@ $("#li-notifications").html('<a href="home.php?page=notifications">Notifications
 	
 <?php } elseif($home_step == 'settings') {
 	
+	var_dump($db->are_email_notifications_enabled($_SESSION['uid']));
 	$enable_emails_checked = '';
 	if($db->are_email_notifications_enabled($_SESSION['uid'])) {
 		$enable_emails_checked = 'checked';
