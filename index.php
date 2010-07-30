@@ -96,7 +96,7 @@ if(isset($_REQUEST['r'])) {
 <div id="error_message">
 	Wrong username/password combination.
 </div>
-<h1>EndAnts is a free, fun web-based tool to help you eliminate negative thoughts</h1>
+<h1>EndAnts makes you feel happier</h1>
 <h2> What are negative thoughts and why should I care?</h2>
 <p>Negative thoughts are the enemy of happiness. Since our life is very much determined by our mind, our thoughts can make or break our life. Negative thoughts will distract your focus from what's important and will drain your energy.<br />Most of the time, they happen automatically.</p>
 <p>Thinking realistic &amp; positive makes us happier. Optimists will live longer, be happier, demonstrate better survival rates for cancer, perform better in sports, especially after defeat, and advance more quickly in their careers. <label>Source: Martin Seligman, <a href="http://www.amazon.com/dp/1400078393/?tag=httpwwwhiph02-20" target="_blank">Learned Optimism</a></label></p>

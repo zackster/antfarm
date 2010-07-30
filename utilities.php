@@ -1,5 +1,12 @@
 <?php
 require_once('DB.php');
+
+
+function make_bold($input) {
+	return '<b>' . $input . '</b>';
+}
+
+
 function draw_leaderboard() {
 	$db = new DB();
 	$res = $db->calculate_leaderboard();
@@ -53,15 +60,74 @@ echo <<<GOOG
 GOOG;
 }
 
-function send_email_notification($user, $subject, $message) {
+function send_email_notification($user, $subject, $html_message, $text_message) {
+	
+	require_once('thirdparty/swiftmailer.lib/swift_required.php');
+	include('config.php');
+	
+	
 	$db = new DB();
-	$to = $db->get_email_address($user);	
-	$headers = 'From: notifications@endants.com' . "\r\n" .
-	    'Reply-To: zachary@endants.com' . "\r\n" .
-	    'X-Mailer: PHP/' . phpversion();
+	$to_email = $db->get_email_address($user);	
+	$to_username = $db->get_username($user);
+	
+	$from = array('zachary@endants.com' => 'EndAnts Notifications');
+	$to = array($to_email=>$to_username);
 
-	mail($to, $subject, $message, $headers);
+
+
+	// Setup Swift mailer parameters
+	$transport = Swift_SmtpTransport::newInstance('smtp.sendgrid.net', 25);
+	$transport->setUsername($sendgrid_username);
+	$transport->setPassword($sendgrid_password);
+	$swift = Swift_Mailer::newInstance($transport);
+
+	// Create a message (subject)
+	$message = new Swift_Message($subject);
+
+	// attach the body of the email
+	$message->setFrom($from);
+	$message->setBody($html_message, 'text/html');
+	$message->setTo($to);
+	$message->addPart($text_message, 'text/plain');
+
+	// send message 
+
+	try {
+
+
+		if ($recipients = $swift->send($message, $failures))
+		{
+		  // This will let us know how many users received this message
+		  // echo 'Message sent out to '.$recipients.' users';
+		}
+		// something went wrong =(
+		else
+		{
+		  // echo "Something went wrong - ";
+		  // print_r($failures);
+		}
+	} catch (Exception $e) {
+		//echo 'Something went wrong..';
+		// so let's mail it manually . . . 
+		$headers = 'From: zachary@endants.com' . "\r\n" .
+		    'Reply-To: zachary@endants.com' . "\r\n" .
+		    'X-Mailer: PHP/' . phpversion();
+
+		mail($to_email, $subject, $text_message, $headers);
+		
+		
+	}
+	
+	
 	
 }
+
+
+ 
+
+ 
+
+
+
 
 ?>

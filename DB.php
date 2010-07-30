@@ -12,11 +12,11 @@ class DB {
             return;
     }
 
-	function are_email_notifications_disabled($uid) {
+	function are_email_notifications_enabled($uid) {
 		$query = sprintf("SELECT disable_email_notifications FROM users WHERE id=%d", $uid);
 		$res = mysql_query($query);
 		$row = mysql_fetch_assoc($res);
-		return $row['disable_email_notifications'];
+		return (!(bool)$row['disable_email_notifications']);
 	}
 
 
@@ -98,6 +98,12 @@ class DB {
 		return $row['email'];
 	}
 	
+	function get_username($user) {
+		$query = sprintf("SELECT username FROM users WHERE id=%d", $user);
+		$res = mysql_query($query);
+		$row = mysql_fetch_assoc($res);
+		return $row['username'];		
+	}
 
 	function get_notifications($uid) {
 		$query = sprintf("SELECT message,add_date FROM notification_queue WHERE uid=%d AND is_read=0 ORDER BY add_date desc", $uid);
