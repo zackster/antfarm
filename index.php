@@ -247,7 +247,8 @@ if(isset($_REQUEST['r'])) {
 						<question>Is there any science to back this up?</question>
 						<answer>Yes, there's a lot. You can start with <a href="http://www.ncbi.nlm.nih.gov/pubmed/16199119" target="_blank">this meta-review</a>: <br /><br /><span id="cbt_review">Butler, A.C., Chapman, J.E., Forman, E.M., &amp; Beck, A.T. (2006). The empirical status of cognitive-behavioral therapy: A review of meta-analyses. <i>Clinical Psychology Review, 26(1),</i> 17-31.</span></answer>
 						
-						
+						<question>How do I contact you?</question>
+						<answer>Please email zachary@endants.com</answer>
 						
 			
 				
