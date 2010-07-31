@@ -26,8 +26,10 @@ if(isset($_REQUEST['r'])) {
 	</script>	
 	<script>
 	function showRegistration() {
-		$("#login_field").hide();
+		$("#content-shadow").remove();
+		$("div#screenshot-preview").remove();
 		$("#registration_field").show();
+		$("a#questions").remove();
 	}
 	function showLogin() {
 		$("#login_field").show();
@@ -64,6 +66,13 @@ if(isset($_REQUEST['r'])) {
 			$(this).css('color','black');
 			$(this).val('');
 		});
+		$("input#tryit-field").keydown(function(e) { 		
+			if (e.keyCode === 13) { 
+				
+				showRegistration();
+				
+			} 
+		});
 
 		$('#galleria-images').galleria({
 			height: '300',
@@ -97,6 +106,7 @@ if(isset($_REQUEST['r'])) {
 		$("#error_message").html('You entered an invalid email address');
 <?php }	elseif(isset($_GET['regerr'])) { ?>
 		$("#error_message").show();
+		showRegistration();
 		$("#error_message").html('Please enter a unique username and email address.');
 <?php } elseif(isset($_GET['demo'])) { ?>
 		$("#error_message").show();
@@ -138,7 +148,12 @@ if(isset($_REQUEST['r'])) {
 		</div>
 	</div>
 	<div id="endants-content">
-
+		
+			
+		<div id="error_message">
+			Wrong username/password combination.
+		</div>
+		
 
 		<div id="screenshot-preview">
 
@@ -160,8 +175,49 @@ if(isset($_REQUEST['r'])) {
 				<h1 style="color:black">EndAnts makes you <span class="feel-better">feel better</span></span></h1> 
 				<h3 style="color:#37599E">What's been troubling you lately?</h3>
 				<input id="tryit-field" class="tryit" value="I forgot to book airline tickets">
-				<button class="tryit-button" id="tryit-demo">Get Started</button>
+				<button class="tryit-button" id="tryit-demo" onclick="showRegistration()">Get Started</button>											
+				
+				
 			</div>
+			
+				
+			<div id="registration_field" >
+				<p style="margin-left: 30px;font-size:1.3em;background-color:#FAFAD2">We saved your grievance information. Registration takes 20 seconds and only requires filling out these 4 fields.</p>
+				<form id="reg_form" action="registration.php" method="post">
+					<fieldset>
+						<p class="field">
+							<label class="field">username</label>
+							<input type="text" name="reg_username" class="field" id="reg_username">								
+						</p>
+						<p class="field">
+							<label class="field">email</label>
+							<input type="text" name="reg_email" class="field" id="reg_email">
+						</p>
+						<p class="field">
+							<label class="field">password</label>
+							<input type="password" name="reg_password" class="field" id="reg_password">								
+						</p>
+
+
+						<p class="field">
+							<label class="field">notifications</label>
+							<input type="checkbox" name="email_updates" checked> send me updates about major changes<br />
+							<span style="font-size:.8em"><i>we will <u>never</u> spam you or sell your email</i></span>
+						</p>
+
+						<p class="field">
+							<label class="field"></label>
+							<a href="#" onclick="registerUser()"><span style="font-size:1.3em">Register</span></a>
+						</p>
+
+
+
+					</fieldset>
+				</form>
+			</div>
+		
+			
+			
 			<div id="content-explanation">
 <br />		
 
@@ -208,59 +264,13 @@ if(isset($_REQUEST['r'])) {
 	
 <?php 
 /*
-<div id="error_message">
-	Wrong username/password combination.
-</div>
-<h1>EndAnts makes you feel happier</h1>
-<h2> What are negative thoughts and why should I care?</h2>
-<p>Negative thoughts are the enemy of happiness. Since our life is very much determined by our mind, our thoughts can make or break our life. Negative thoughts will distract your focus from what's important and will drain your energy.<br />Most of the time, they happen automatically.</p>
-<p>
-<h2>What does EndAnts do?</h2>
-<p>EndAnts lets you list out events that "made" you feel bad, and then the thoughts that you had in response to the events. It lets you find any automatic distortions in your thoughts and then leverage the power of community to help you correct them.</p>
-<h3>See some screenshots</h3>
 
-<p>EndAnts uses an approach similar to Cognitive Behavioral Therapy, which has been repeatedly found to be even more effective than antidepressants in the treatment of adult depression. <label id="cbt_source">(<u>Source</u>)</label>  </p>
-
-<h2>Registration</h2>
-<p>Registration takes only 20 seconds and filling out a username, email, and password.</p>
 
 <button onclick="showRegistration()">Register</button>
 <button class="login" onclick="showLogin()">Log In</button>
 <?php // <button class="demo" onclick="javascript:window.location='dtr.php?demo_mode'">Demo</button> ?>
 <br /><br />
 
-<div id="registration_field" class="field">
-	<form id="reg_form" action="registration.php" method="post">
-		<fieldset>
-			<p class="field">
-				<label class="field">username</label>
-				<input type="text" name="reg_username" class="field" id="reg_username">								
-			</p>
-			<p class="field">
-				<label class="field">email</label>
-				<input type="text" name="reg_email" class="field" id="reg_email">
-			</p>
-			<p class="field">
-				<label class="field">password</label>
-				<input type="password" name="reg_password" class="field" id="reg_password">								
-			</p>
-
-
-			<p class="field">
-				<label class="field">notifications</label>
-				<input type="checkbox" name="email_updates" checked> send me updates about major changes<br />
-				<span style="font-size:.8em"><i>we will <u>never</u> spam you or sell your email</i></span>
-			</p>
-			
-			<p class="field">
-				<label class="field"><a href="#" onclick="registerUser()">Register</a></label>
-			</p>
-			
-
-			
-		</fieldset>
-	</form>
-</div>
 
 
 

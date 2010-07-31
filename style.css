@@ -212,7 +212,9 @@ input.field {
 	width:387px;
 }
 label.field {
-	color:#8B795E;
+
+
+	color:#9CCB19;
 	display:block;
 	float:left;
 	font: bold 13px 'Lucida Grande','Arial','Helvetica',sans-serif;
@@ -405,6 +407,13 @@ button.login-button {
 button:hover {
 	background-color: #0057BF;
 }
+div#registration-field {
+	text-align: center;
+	background: #F4F4F4;	
+	clear: both;
+	margin: 0px auto;
+	
+}	
 div#content-shadow {
 
 	text-align: center;
