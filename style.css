@@ -306,7 +306,7 @@ span.anonymous-desc {
 }
 span#cbt_review {
 	width: 500px;
-	margin-left: 90px;
+
 	padding-bottom: 30px;
 	padding-left: 10px;
 	display: block;
@@ -321,7 +321,7 @@ div#endants-header {
 	margin: 0px;
 	padding-top: 20px;
 	height: 100px;
-	background-image: url('http://ohlife.com/img/static/home/bg_content.gif');
+	background-image: url('images/bg_content.gif');
 	background-position: bottom;
 	width: 100%;
 	clear: both;
@@ -397,7 +397,7 @@ button.login-button {
 	vertical-align:top;
 	-moz-border-radius:7px 7px 7px 7px;
 	background-color:#0267CC;
-	margin-top: 0px !important;
+	margin-top: 1px !important;
 	padding: 5px 30px !important;
 	font-size:1em;
 	margin-right:0;
@@ -419,6 +419,7 @@ input.tryit {
 	width:300px;
 	text-align: center;
 	margin: 0px auto;
+	color: grey;
 }
 button.tryit-button {
 	-moz-box-shadow:0 1px 3px rgba(0, 0, 0, 0.5);
@@ -433,8 +434,27 @@ button.tryit-button {
 	vertical-align:top;
 	-moz-border-radius:7px 7px 7px 7px;
 	background-color:#0267CC;
-	margin-top: 0px !important;
+	margin-top: 2px !important;
 	padding: 3px 30px !important;
 	font-size:1em;
 	margin-right:0;
+}
+
+question {
+	font-size: 1.1em;
+	font-weight: bold;
+	display: block;
+	clear: both;
+	margin-bottom: 5px;
+}
+answer {
+	display: block;
+	margin-bottom: 20px;
+}
+img.bordered {
+	border: 1px solid #000;
+}
+span.feel-better {
+	color:#9CCB19;
+
 }
