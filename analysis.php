@@ -28,6 +28,25 @@ else {
 	<script type="text/javascript">
 	$(document).ready(function() {
 
+
+		
+		var distortions = { 
+			"assuming":"Assuming the worst without testing the evidence",
+			"shoulds (musts/oughts)":"Demands we make of ourselves. If we really knew better or could have done better, then we <i>would have done better</i>. Instead, we can replaces \"shoulds\" with \"woulds\" or \"coulds\".",
+			"the fairy-tale fantasy":"Demanding the ideal from life. It <i>would</i> be nice if things were ideal, but they're not. Too bad. Now, I wonder what I <i>could</i> do to improve things",
+			"all or nothing thinking":"Performing below some standard usually means we've performed at 80 percent or at 35 percent - rarely at 0 percent. And poor <i>performance</i> never makes a complex <i>person</i> worthless, just fallible",
+			"overgeneralizing":"Deciding that negative experiences describe your life completely. Such global statements are unkind, depressing, and usually inaccurate to some degree. The antidote is to use more precise language",
+			"labeling":"Giving yourself a label, or name, as though a single word describes a person completely. Confine labels to behaviors rather than people",
+			"dwelling on the negative":"Focusing on the negative aspects of a situation instead of putting it into perspective, alongside other positives",
+			"rejecting the positive":"Negating positive so that our self-esteem remains low. If someone compliments your work, you dismiss it by saying \"Oh, it was really nothing.\" Failing to give yourself credit where it is due. Often coupled with criticizing yourself when things go wrong",
+			"unfavorable comparisons":"Often occurs when magnifying another's strengths while minimizing another's faults and your own accomplishments. Ask yourself: \"Why must I compare? Why can\'t I just appreciate that each person has unique strengths and weaknesses? Another's contributions aren't necessarily better, just different",
+			"catastrophizing":"When you believe something is a catastrophe, you tell yourself that it is so awful that you \"can't stand it!\" This convinces yourself that you are too feeble to cope with life. Even in the worst-case scenario, you are still alive. You can \"stand\" anything, short of being steamrolled to death",
+			"personalizing":"Personalizing is seeing yourself more involved in negative events than you really are. Distinguish influences from causes, and look realistically for other influences outside of ourselves. The ego becomes so involved that each event becomes a test of worth",
+			"blaming":"Blaming is the opposite of personalizing. Whereas personalizing puts responsibility on yourself for your difficulties, blaming puts it all on something outside of yourself. The problem with blaming is that it tends to make us think of ourselves as helpless victims who are too powerless to cope. You can still assume realistic responsibility, but instead you can take responsibility for behavior or a choice, not for being bad to the core.",
+			"making feelings facts":"This happens when you take your feelings as proof of the way that things are. Feelings result from our thoughts, distorted thoughts may not reflect reality. Ask yourself: what would someone who is 100 percent inadqueate, bad, guilty, or hopeless be like? Am I really like that"											
+		};
+
+
 		/* Responses from section 1 - dtr.php */				
 		var session_data = <?=json_encode($_SESSION)?>;		
 		var emotion_data = session_data['emotions'];		
@@ -46,6 +65,17 @@ else {
 		$("#analysis-reasonable-response-believability").hide();
 		$("#analysis-subsequent-believability").hide();
 		$("#analysis-rerate-emotional-intensity").hide();
+
+
+		/* Distortion List Info */
+		
+		$("select.select-distortions").change(function() {
+			$("#distortion-explanation").show();
+			selected_distortion = $(this).val();
+			$("#distortion-explanation").html(distortions[selected_distortion]);
+
+//			alert($("select.select-distortions option:selected").text());
+		})
 
 		/* Next Button Functionality */
 		
@@ -74,6 +104,7 @@ else {
 		
 		$("#analysis-initial-believability-next").click(function() {
 			$("#analysis-initial-believability").hide();
+			$("#distortion-explanation").hide();			
 			$("#analysis-initial-accuracy").show();
 			$("#pb2").progressBar((2/7)*100);			
 			$("#stepnumber").text(3);
@@ -356,10 +387,14 @@ else {
 	<h2>Accuracy</h2>
 	<label>Evaluate the accuracy of each thought. <br />Choose up to 3 distortions that might apply.<br />
 		Click <a href="#" onclick="javascript:distortionPopup();">here</a> for a pop-up explanation of the distortions.</label>
-	<br /><br />
+	<br /><br />	
+	<div id="distortion-explanation">
+	</div>
+	
+	
 				<span class="ant" id="show-ant1a" style="display: block; width: 700px"></span>
 				<div class="distortion-list">(1)
-					<select id="distortion-1a">
+					<select id="distortion-1a" class="select-distortions">
 						<option value="assuming">assuming</option>
 						<option value="shoulds (musts/oughts)">shoulds (musts/oughts)</option>
 						<option value="the fairy-tale fantasy">the fairy-tale fantasy</option>
@@ -376,7 +411,7 @@ else {
 					</select>	
 					<img src="images/red-arrow-left-2.png" class="red-arrow-left" style="display: none;"/></div>
 				<div class="distortion-list">(2)
-					<select id="distortion-1b">
+					<select id="distortion-1b" class="select-distortions">
 						<option selected value="---">---</option>
 						<option value="assuming">assuming</option>
 						<option value="shoulds (musts/oughts)">shoulds (musts/oughts)</option>
@@ -395,7 +430,7 @@ else {
 
 				</div>
 				<div class="distortion-list">(3)
-					<select id="distortion-1c">
+					<select id="distortion-1c" class="select-distortions">
 						<option selected value="---">---</option>
 						<option value="assuming">assuming</option>
 						<option value="shoulds (musts/oughts)">shoulds (musts/oughts)</option>
