@@ -158,14 +158,13 @@ if(isset($_REQUEST['r'])) {
 		<div id="screenshot-preview">
 
 			<div id="galleria-images">
-				<img src="images/Picture 8-cropped.png">
-				<img src="images/Picture 9-cropped.png">
-				<img src="images/Picture 10-cropped.png">
-				<img src="images/Picture 11-cropped.png">
-				<img src="images/Picture 12-cropped.png">
-				<img src="images/Picture 13-cropped.png">
-				<img src="images/Picture 14-cropped.png">	
-				<img src="images/Picture 15-cropped.png">
+				<img src="images/Picture 9-cropped-step.png">
+				<img src="images/Picture 10-cropped-step.png">
+				<img src="images/Picture 11-cropped-step.png">
+				<img src="images/Picture 12-cropped-step.png">
+				<img src="images/Picture 13-cropped-step.png">
+				<img src="images/Picture 14-cropped-step.png">	
+				<img src="images/Picture 15-cropped-step.png">
 			</div>
 			<label style="text-align: center">Screenshots of EndAnts</label>
 			
