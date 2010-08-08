@@ -206,7 +206,7 @@ if(isset($_REQUEST['r'])) {
 
 						<p class="field">
 							<label class="field"></label>
-							<a href="#" onclick="registerUser()"><span style="font-size:1.3em">Register</span></a>
+							<a href="#" id="register-user-link" onclick="registerUser()"><span style="font-size:1.3em">Register</span></a>
 						</p>
 
 
