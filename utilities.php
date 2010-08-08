@@ -60,6 +60,21 @@ echo <<<GOOG
 GOOG;
 }
 
+function add_kissmetrics_tracking() {
+echo <<<KISS
+<script type="text/javascript">
+  var _kmq = _kmq || [];
+  function _kms(u){
+    setTimeout(function(){
+      var s = document.createElement('script'); var f = document.getElementsByTagName('script')[0]; s.type = 'text/javascript'; s.async = true;
+      s.src = u; f.parentNode.insertBefore(s, f);
+    }, 1);
+  }
+  _kms('//i.kissmetrics.com/i.js');_kms('//doug1izaerwt3.cloudfront.net/276e9d18bcadb79072f378c88f450d6cf967fea0.1.js');
+</script>	
+KISS;
+}
+
 function send_email_notification($user, $subject, $html_message, $text_message) {
 	
 	require_once('thirdparty/swiftmailer.lib/swift_required.php');

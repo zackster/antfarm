@@ -11,6 +11,7 @@ if(isset($_REQUEST['r'])) {
 
 ?><html>
 <head>
+	<?php add_kissmetrics_tracking(); ?>			
 	<meta name="title" content="EndAnts: Get in touch with reality" />
 	<meta name="description" content="EndAnts is a fun app that makes you happier by destroying Automatic Negative Thoughts." />
 	<link rel="image_src" href="http://www.endants.com/images/logo.jpg" / >		 
