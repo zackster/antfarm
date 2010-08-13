@@ -91,7 +91,14 @@ function send_email_notification($user, $subject, $html_message, $text_message) 
 
 
 	// Setup Swift mailer parameters
+/*
+
+ 	Changing this to use TLS because of port 25 lameness. 
+
 	$transport = Swift_SmtpTransport::newInstance('smtp.sendgrid.net', 25);
+	
+*/
+	$transport = Swift_SmtpTransport::newInstance('smtp.sendgrid.net', 587, 'tls');	
 	$transport->setUsername($sendgrid_username);
 	$transport->setPassword($sendgrid_password);
 	$swift = Swift_Mailer::newInstance($transport);
